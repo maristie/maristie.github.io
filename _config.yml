@@ -1,0 +1,53 @@
+title: Freespace
+author:
+  name: Yan
+  email: me@maristie.com
+description: >
+  A personal website and irregularly updated technical blog.
+
+show_excerpts: false # set to true to show excerpts on the homepage
+
+minima:
+  date_format: "%b %-d, %Y"
+  
+  social_links:
+    linkedin: maristie
+    github: maristie
+
+  #skin: dark
+
+theme: minima
+
+# URL format
+permalink: /:categories/:title/
+
+# Kramdown settings
+kramdown:
+    parse_block_html: true
+
+# Default configuration for posts
+defaults:
+    -
+        scope:
+            path: ""
+            type: posts
+        values:
+            layout: post
+            category: blog
+
+# Exclude files
+exclude:
+    - LICENSE
+    - CNAME
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
+
+# Jekyll plugins
+plugins:
+    - jekyll-sitemap
+    - jekyll-feed
+    - jekyll-redirect-from
+    - jekyll-seo-tag
