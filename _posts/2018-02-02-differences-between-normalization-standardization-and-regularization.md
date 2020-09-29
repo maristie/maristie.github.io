@@ -61,6 +61,3 @@ Here is a comparison between L1 and L2 regularizations.
 [^quora_reg]: https://www.quora.com/What-is-the-difference-between-L1-and-L2-regularization-How-does-it-solve-the-problem-of-overfitting-Which-regularizer-to-use-and-when/answer/Kenneth-Tran?share=400c336d&srid=51VPj
 [^wiki_reg]: https://en.wikipedia.org/wiki/Regularization_%28mathematics%29
 [^wiki_l2]: https://en.wikipedia.org/wiki/Ridge_regression
-
-<!-- MathJax -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
