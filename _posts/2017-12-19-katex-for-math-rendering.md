@@ -85,6 +85,3 @@ $$ \tanh{x} = \dfrac{e^x-e^{-x}}{e^x+e^{-x}} $$
 [^2]: https://help.github.com/articles/configuring-jekyll/
 
 [^3]: https://kramdown.gettalong.org/math_engine/mathjax.html
-
-<!-- MathJax -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>

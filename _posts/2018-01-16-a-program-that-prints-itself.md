@@ -49,6 +49,3 @@ In fact it is a conclusion derived from the famous [recursion theorem](https://e
 
 [^ntm_def]: It differs from deterministic one by multiple possible states after a state transition.
 [^cm]: https://www.edx.org/course/li-lun-ji-suan-ji-ke-xue-ji-chu-pekingx-04830260x-0
-
-<!-- MathJax -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
