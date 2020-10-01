@@ -13,6 +13,8 @@ The left one is what I'd like to introduce today - [$$\KaTeX$$](https://khan.git
 
 As what I've displayed above, $$\KaTeX$$ is overwhelmingly faster than MathJax (about 50 times!). Here's [a website](https://www.intmath.com/cg5/katex-mathjax-comparison.php) that you could check their speed on your own.
 
+*NOTE*: MathJax 3 has been released, and its performance of math rendering was improved a lot. For this reason, there's no significant drawback in MathJax anymore. Take it easy to deploy either of them.
+
 ## Disadvantages
 
 $$\KaTeX$$ is relatively younger than MathJax, and thus is not widely supported by other software like kramdown. And the supported functionality is still a subset of MathJax. However, along with the development [the repo](https://github.com/Khan/KaTeX) has attracted more and more GitHubbers, which seems very promising.
