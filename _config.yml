@@ -17,8 +17,8 @@ minima:
 theme: minima
 
 # Enable pagination
-paginate: 30
-paginate_path: "/page/:num/"
+#paginate: 30
+#paginate_path: "/page/:num/"
 
 # URL format
 permalink: /:year/:month/:title
