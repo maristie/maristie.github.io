@@ -5,90 +5,81 @@ tags: [IT, Algorithm]
 
 Intrigued by [an interesting problem](https://leetcode.com/problems/split-array-largest-sum/) as following, I'd like to share some of my thoughts toward it. Hope it can be helpful.
 
-> Given an integer array `arr` to be divided into \(m\) non-empty continuous subarrays, minimize the largest sum among these subarrays.
+> Given an integer array `arr` to be divided into $ m $ non-empty continuous subarrays, minimize the largest sum among these subarrays.
 
 ## Introduction
+As you can see, the original problem assumes a strong constraint toward the range of each value in the array. Many have put forward greedy solutions performing binary search between the minimum and maximum of possible largest sums, which scan the array in one pass every time we check a possible value and thus result in a time complexity $ O(n\log(sum)) $ ($ n $ is the length of array). This is efficient enough since $ f(x) = \log(x) $ has a much smaller derivative compared to $ f(x) = x $, providing a good performance in most cases even when sum is a somewhat large number.
 
-As you can see, the original problem assumes a strong constraint toward the range of each value in the array. Many have put forward greedy solutions performing binary search between the minimum and maximum of possible largest sums, which scan the array in one pass every time we check a possible value and thus result in a time complexity \(O(n\log(sum))\) (\(n\) is the length of array). This is efficient enough since \(f(x) = \log(x)\) has a much smaller derivative compared to \(f(x) = x\), providing a good performance in most cases even when sum is a somewhat large number.
-
-Some others think of a more 'general' DP solution with time complexity \(O(mn^2)\). This is not so tricky as the greedy solution above, and applies to a broader range of problems. However, \(O(mn^2)\) is by no means satisfactory.
+Some others think of a more 'general' DP solution with time complexity $ O(mn^2) $. This is not so tricky as the greedy solution above, and applies to a broader range of problems. However, $ O(mn^2) $ is by no means satisfactory.
 
 Is there another approach independent of the sum of array while achieving a relatively better time complexity?
 
 ## Intuition
-
 ### Beyond Bottom-up DP
-
 Let's start from the DP solutions. Most of them are implemented bottom-up. One significant defect of bottom-up DP is that redundant subproblems are computed. In many cases, we only need part of them to solve the original problem. This usually only causes a difference in constant factor though.
 
 ### Interesting Observations
-
 Define the subroutine solving the problem above as `splitArray(arr, m)`.
 
 #### First Observation
-Observe that if `arr_1` is a subarray of `arr_2`, then `splitArray(arr_1, m)` < `splitArray(arr_2, m)` holds for any \(m\). This can be simply proved because the minimum of largest subarray sum cannot be larger when any subset of elements in `arr_2` is removed.
+Observe that if `arr_1` is a subarray of `arr_2`, then `splitArray(arr_1, m)` $<$ `splitArray(arr_2, m)` holds for any $ m $. This can be simply proved because the minimum of largest subarray sum cannot be larger when any subset of elements in `arr_2` is removed.
 
 ##### *Lemma 1*
-If `arr_1` \(\subseteq\) `arr_2`, then `splitArray(arr_1, m)` \(\le\) `splitArray(arr_2, m)`.
+If `arr_1` $ \subseteq $ `arr_2`, then `splitArray(arr_1, m)` $ \le $ `splitArray(arr_2, m)`.
 
 #### Second Observation
-Another interesting fact: suppose we divide the array `arr` into two parts, the left part `arr_left` comprising \(k\) subarrays and the right part `arr_right` comprising \(m - k\) subarrays, then `res` is the result of `splitArray(arr, m)` iff `res` is the result of \(\min \{ \max(\)`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`\()\}\) in all possible divisions.
+Another interesting fact: suppose we divide the array `arr` into two parts, the left part `arr_left` comprising $ k $ subarrays and the right part `arr_right` comprising $ m - k $ subarrays, then `res` is the result of `splitArray(arr, m)` iff `res` is the result of $\min \\{ \max ($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$\\}$ in all possible divisions.
 
-As each divison of \(m\) subarrays can be mapped to a combination of \(k\) subarrays on the left and \(m - k\) subarrays on the right (called [**bijection**](https://en.wikipedia.org/wiki/Bijection)), it can be easily shown that once either of `splitArray(arr, m)` and \(\min \{ \max(\)`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`\()\}\) gives a smaller value, it will break the optimality of the other.
+As each divison of $ m $ subarrays can be mapped to a combination of $ k $ subarrays on the left and $ m - k $ subarrays on the right (called [**bijection**](https://en.wikipedia.org/wiki/Bijection)), it can be easily shown that once either of `splitArray(arr, m)` and $\min \\{\max($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$)\\}$ gives a smaller value, it will break the optimality of the other.
 
 ##### *Lemma 2*
-Suppose that a division \(d \in D\) split the array into `arr_left` and `arr_right` (that is, `arr` \(=\) `arr_left` \(\cup\) `arr_right`), then
-`splitArray(arr, m)` \(\iff\) \(\min_{d \in D} \{ \max(\)`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`\()\}\)
+Suppose that a division $ d \in D $ split the array into `arr_left` and `arr_right` (that is, `arr` $ = $ `arr_left` $ \cup $ `arr_right`), then
+`splitArray(arr, m)` $\iff \min_{d \in D} \\{ \max($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$)\\}$
 
 ### Combine the Lemmas
-
 From *lemma 2*, it is enticing to adopt a *Divide & Conquer* approach:
-> Choose any legit `k`, then search \(\min_{d \in D} \{ \max(\)`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`\()\}\) in a total of \(n - m + 1\) divisions.
+> Choose any legit `k`, then search $\min_{d \in D} \\{ \max($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$)\\}$ in a total of $ n - m + 1 $ divisions.
 
 But wait! Recall and apply *lemma 1*, we have
-> For a fixed \(k\), as the division point moves rightward, the left part `splitArray(arr_left, k)` is monotonically increasing, and the right part `splitArray(arr_right, m - k)` is monotonically decreasing.
+> For a fixed $ k $, as the division point moves rightward, the left part `splitArray(arr_left, k)` is monotonically increasing, and the right part `splitArray(arr_right, m - k)` is monotonically decreasing.
 
-So there is **NO** need to search all of the \(n - m + 1\) divisions! If we aim to find the division \(d\) that minimizes \( \max(\)`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`\()\), just check the divison point at which the left and right parts have a minimized absolute value of difference.
+So there is **NO** need to search all of the $ n - m + 1 $ divisions! If we aim to find the division $ d $ that minimizes $  \max( $`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$ ) $, just check the divison point at which the left and right parts have a minimized absolute value of difference.
 
 To find the division point, employ binary search in logarithmic time. (And the search space shrinks to a logarithmic one too!)
 
 ## Solution
-
-We have broken the problem into logarithmic subproblems now. A confusing point is how to choose the \(k\). In fact, it's all up to you. Any legit \(k\) (1 <= \(k\) < \(m\)) is acceptable. For convenience, I'll pick \(k = 1\) for the left and hence \(m - 1\) for the right part.
+We have broken the problem into logarithmic subproblems now. A confusing point is how to choose the $ k $. In fact, it's all up to you. Any legit $ k $ ($ 1 \le k < m $) is acceptable. For convenience, I'll pick $ k = 1 $ for the left and hence $ m - 1 $ for the right part.
 
 ### Back to DP
-
 So far we've been exploring D&C and binary search. But how about the aforementioned bottom-up DP?
 
-Think of `splitArray(arr_left, 1)` and `splitArray(arr_right, m - 1)`. The left part is easy to evaluate by just calculating the sum of `arr_left` with a prefix sum array in \(O(1)\) time. But the right part will invoke subroutine `splitArray` recursively. To avoid redundant computations, we can store the result every time we execute `splitArray` indexed by its two arguments `(left bound of arr_right, m)` (as right bound will always be the same as the original array).
+Think of `splitArray(arr_left, 1)` and `splitArray(arr_right, m - 1)`. The left part is easy to evaluate by just calculating the sum of `arr_left` with a prefix sum array in $ O(1) $ time. But the right part will invoke subroutine `splitArray` recursively. To avoid redundant computations, we can store the result every time we execute `splitArray` indexed by its two arguments `(left bound of arr_right, m)` (as right bound will always be the same as the original array).
 
 This is the so-called *memoization* technique, aka top-down DP.
 
 ## Time Complexity Analysis
-
 The complete solution has been constructed now. Last, but by no means the least, is the analysis toward its time complexity.
 
 ### Recurrence Relation
-
 Again, let's get back to the subproblem breaking step:
-> `splitArray(arr, m)` \(\to\) \(\min_{d \in D} \{ \max(\)`splitArray(arr_left, 1)`, `splitArray(arr_right, m - 1)`\()\}\), where `splitArray(arr_left, 1)` can be computed in \(O(1)\) time and at most \(O(\log n)\) subproblems (i.e. `splitArray(arr_right, m - 1)`) need to be searched when using binary search.
+> `splitArray(arr, m)` $\to \min_{d \in D} \\{ \max($`splitArray(arr_left, 1)`, `splitArray(arr_right, m - 1)`$)\\}$, where `splitArray(arr_left, 1)` can be computed in $ O(1) $ time and at most $ O(\log n) $ subproblems (i.e. `splitArray(arr_right, m - 1)`) need to be searched when using binary search.
 
-Define the time complexity of solving the original problem with the array length being \(n\) and number of subarrays being \(m\) as \(T(n, m)\). Then we have the following recurrence relation equation:
+Define the time complexity of solving the original problem with the array length being $ n $ and number of subarrays being $ m $ as $ T(n, m) $. Then we have the following recurrence relation equation:
 
 $$ T(n, m) = \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}, m - 1) + O(\log n) $$
 
 Unfortunately, it's hard to derive an analytical solution from it. But we can get an upper bound instead of an asymtotically tight one (as [big O notation](https://en.wikipedia.org/wiki/Big_O_notation) defines).
 
 ### Loose Upper Bound
+Note that $ T(n, m - 1) \le T(n, m) $ as $ T(n, m) $ can be broken into $ T(n, m - 1) $ and $ T(0, 1) $ and thus subproblem $ Q(n, m - 1) $ can be reduced to $ Q(n, m) $.
 
-Note that \(T(n, m - 1) \le T(n, m)\) as \(T(n, m)\) can be broken into \(T(n, m - 1)\) and \(T(0, 1)\) and thus subproblem \(Q(n, m - 1)\) can be reduced to \(Q(n, m)\).
+Therefore,
 
-Therefore, 
 $$ 
     T(n, m) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}, m) + O(\log n)
 $$
 
-\(m\) can be regarded as a constant and removed now. Simplify \(T(n, m)\) as \(T(n)\), the equation can be rewritten in
+$ m $ can be regarded as a constant and removed now. Simplify $ T(n, m) $ as $ T(n) $, the equation can be rewritten in
 
 $$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}) + O(\log n) $$
 
@@ -96,7 +87,7 @@ It's very similar to the required form of [*Master theorem*](https://en.wikipedi
 
 $$ T(n) \le \lceil{\log n}\rceil \cdot T(\frac{n}{2}) + O(\log n) $$
 
-Well, it's not deducible from [*Master theorem*](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)) for its non-constant coefficient. To remove the \(\log n\) coefficient, transform it into another variable \(k\) denoting \(\lceil\log n\rceil\).
+Well, it's not deducible from [*Master theorem*](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)) for its non-constant coefficient. To remove the $ \log n $ coefficient, transform it into another variable $ k $ denoting $ \lceil\log n\rceil $.
 
 $$ \begin{aligned}
 T(2^k) &\le kT(2^{k - 1}) + O(k) \\
@@ -108,17 +99,16 @@ T(2^k) &\le kT(2^{k - 1}) + O(k) \\
 \end{aligned}
 $$
 
-Since \(k!\) is asymtotically equal to \(\sqrt{2\pi k}(\dfrac{k}{e})^k\) by [Stirling's approximation](https://en.wikipedia.org/wiki/Stirling%27s_approximation),
+Since $ k! $ is asymtotically equal to $ \sqrt{2\pi k}(\dfrac{k}{e})^k $ by [Stirling's approximation](https://en.wikipedia.org/wiki/Stirling%27s_approximation),
 
 $$ T(2^k) \le O(k^k(\frac{\sqrt{k}}{e^k} + 1)) = O(k^k) $$
 
-Finally convert \(k\) back to \(n\), we get
+Finally convert $ k $ back to $ n $, we get
 
 $$ T(n) \le O({\log n}^{\log n}) $$
 
 ### Linear Complexity
-
-Compare it with the approach using \(sum\).
+Compare it with the approach using $ sum $.
 
 $$
 \begin{aligned}
@@ -127,13 +117,13 @@ $$
 \end{aligned}
 $$
 
-So it depends on the value of \(n\) and \(sum\). But it's only a loose bound, and it can be tighter.
+So it depends on the value of $ n $ and $ sum $. But it's only a loose bound, and it can be tighter.
 
 At first we have
 
 $$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}) + O(\log n) $$
 
-Note that \(T(\dfrac{n}{2^i})\) has been magnified. If we try expanding the expression, 
+Note that $ T(\dfrac{n}{2^i}) $ has been magnified. If we try expanding the expression, 
 
 $$
 \begin{aligned}
@@ -143,7 +133,7 @@ T(n) &\le (T(\frac{n}{2}) + T(\frac{n}{2^2}) + \dotsb + T(1)) + O(\log n) \\
 \end{aligned}
 $$
 
-As \(T(n)\) is obviously non-trivial and is at least more complex than \(O(1)\).
+As $ T(n) $ is obviously non-trivial and is at least more complex than $ O(1) $.
 
 Observe that
 
@@ -157,9 +147,9 @@ T(8) &\le T(4) + T(2) + T(1) \le O(4) \\
 \end{aligned}
 $$
 
-So we assume that \(T(n) \le O(\dfrac{n}2) = O(n)\). It can be proved by [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction) technique.
+So we assume that $ T(n) \le O(\dfrac{n}2) = O(n) $. It can be proved by [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction) technique.
 
-Suppose \( n = 2^k \) here for convenience. For \(k = 0\), \(T(1) = O(1)\) holds trivially. If \(T(2^i) \le O(2^i)\) holds for all \(0 \le i \le k, i \in \mathbb{N}\)
+Suppose $ n = 2^k $ here for convenience. For $ k = 0 $, $ T(1) = O(1) $ holds trivially. If $ T(2^i) \le O(2^i) $ holds for all $ 0 \le i \le k, i \in \mathbb{N} $
 
 $$
 \begin{aligned}
@@ -170,10 +160,9 @@ T(2^{k + 1}) &\le \sum_{i=0}^k T(2^{i}) \\
 \end{aligned}
 $$
 
-Therefore \(T(n) \le O(n)\) is true.
+Therefore $ T(n) \le O(n) $ is true.
 
 ## Appendix
-
 A Java implementation.
 
 ```java
