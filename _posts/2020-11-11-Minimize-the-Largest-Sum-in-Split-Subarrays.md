@@ -33,7 +33,7 @@ Another interesting fact: suppose we divide the array `arr` into two parts, the 
 As each divison of $ m $ subarrays can be mapped to a combination of $ k $ subarrays on the left and $ m - k $ subarrays on the right (called [**bijection**](https://en.wikipedia.org/wiki/Bijection)), it can be easily shown that once either of `splitArray(arr, m)` and $\min \\{\max($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$)\\}$ gives a smaller value, it will break the optimality of the other.
 
 ##### *Lemma 2*
-Suppose that a division $ d \in D $ split the array into `arr_left` and `arr_right` (that is, `arr` $ = $ `arr_left` $ \cup $ `arr_right`), then
+Suppose that a division $ d \in D_{k, m - k} $ split the array into `arr_left` and `arr_right` (that is, `arr` $ = $ `arr_left` $ \cup $ `arr_right`), then
 `splitArray(arr, m)` $\iff \min_{d \in D} \\{ \max($`splitArray(arr_left, k)`, `splitArray(arr_right, m - k)`$)\\}$
 
 ### Combine the Lemmas
