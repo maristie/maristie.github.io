@@ -87,7 +87,7 @@ It's very similar to the required form of [*Master theorem*](https://en.wikipedi
 
 $$ T(n) \le \lceil{\log n}\rceil \cdot T(\frac{n}{2}) + O(\log n) $$
 
-Well, it's not deducible from [*Master theorem*](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)) for its non-constant coefficient. To remove the $ \log n $ coefficient, transform it into another variable $ k $ denoting $ \lceil\log n\rceil $.
+Well, it's not deducible from *Master theorem* for its non-constant coefficient. To remove the $ \log n $ coefficient, transform it into another variable $ k $ denoting $ \lceil\log n\rceil $.
 
 $$ \begin{aligned}
 T(2^k) &\le kT(2^{k - 1}) + O(k) \\
