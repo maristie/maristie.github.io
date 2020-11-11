@@ -1,5 +1,8 @@
 ---
-title: Set up dual boot
+title: Dual Boot Setup
+tags: [IT]
+redirect_from:
+    - /blog/set-up-dual-boot/
 ---
 
 It's common for people who do not have multiple PCs to install both Windows and Linux on the same computer. Some of them choose to use Virtual Machines to run Linux on Windows or in turn. Virtualization is becoming a mature technology, whose performance is gradually closer to a real operating system. But there are always times that we'd like to use a real OS rather than a VM.

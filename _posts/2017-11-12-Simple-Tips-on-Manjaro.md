@@ -1,5 +1,8 @@
 ---
-title: Tips on Manjaro
+title: Simple Tips on Manjaro
+tags: [IT, Linux]
+redirect_from:
+    - /blog/tips-on-manjaro/
 ---
 
 From my experience of using Manjaro in the last two months.

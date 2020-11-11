@@ -1,5 +1,8 @@
 ---
-title: Introduction to blockchain
+title: Short Introduction to Blockchain
+tags: [IT, Cryptography]
+redirect_from:
+    - /blog/introduction-to-blockchain/
 ---
 
 I was not trying to know about blockchains even after a boom of bitcoin and other cryptocurrencies. I did think that they were bound to supersede the regime of physical currencies, but I anticipated that it should take place in universal economies in ten years or more.

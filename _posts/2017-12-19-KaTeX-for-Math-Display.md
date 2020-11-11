@@ -1,29 +1,32 @@
 ---
-title: KaTeX for math rendering online
+title: KaTeX for Math Display
+tags: [IT, Math, LaTeX]
+redirect_from:
+    - /blog/katex-for-math-rendering/
 ---
 
 In [this article](/blog/disqus-mathjax/), I've introduced MathJax as a tool for Web math rendering. If you've been using MathJax, you would probably agree that MathJax is quite slow in formula transformation. Let's compare MathJax with another online math rendering tool, which I'm going to introduce.
 
-![compare](https://raw.githubusercontent.com/Khan/KaTeX/gh-pages/katex-comparison.gif)
-_From https://xuc.me/blog/katex-and-jekyll/_
+![compare](https://katex.org/img/katex-comparison.gif)
+_From https://katex.org_
 
-The left one is what I'd like to introduce today - [$$\KaTeX$$](https://khan.github.io/KaTeX/), a substitute for MathJax.
+The left one is what I'd like to introduce today - [*KaTeX*](https://khan.github.io/KaTeX/), a substitute for MathJax.
 
 ## Advantages
 
-As what I've displayed above, $$\KaTeX$$ is overwhelmingly faster than MathJax (about 50 times!). Here's [a website](https://www.intmath.com/cg5/katex-mathjax-comparison.php) that you could check their speed on your own.
+As what I've displayed above, *KaTeX* is overwhelmingly faster than MathJax (about 50 times!). Here's [a website](https://www.intmath.com/cg5/katex-mathjax-comparison.php) that you could check their speed on your own.
 
 *NOTE*: MathJax 3 has been released, and its performance of math rendering was improved a lot. For this reason, there's no significant drawback in MathJax anymore. Take it easy to deploy either of them.
 
 ## Disadvantages
 
-$$\KaTeX$$ is relatively younger than MathJax, and thus is not widely supported by other software like kramdown. And the supported functionality is still a subset of MathJax. However, along with the development [the repo](https://github.com/Khan/KaTeX) has attracted more and more GitHubbers, which seems very promising.
+*KaTeX* is relatively younger than MathJax, and thus is not widely supported by other software like kramdown. And the supported functionality is still a subset of MathJax. However, along with the development [the repo](https://github.com/Khan/KaTeX) has attracted more and more GitHubbers, which seems very promising.
 
-## How to deploy $$\KaTeX$$
+## How to deploy *KaTeX*
 
 **Update**: it's recommended that CSS be placed in `<head>` and JavaScript be placed before `</body>`.
 
-Similar to MathJax we only need to insert several scripts in `<head>` block. You could refer to the official website for guidance (perhaps you'll need [Auto-render](https://github.com/Khan/KaTeX/tree/master/contrib/auto-render), an extension for $$\KaTeX$$). Here I'll show a special case when we're using Jekyll and on GitHub Pages.
+Similar to MathJax we only need to insert several scripts in `<head>` block. You could refer to the official website for guidance (perhaps you'll need [Auto-render](https://github.com/Khan/KaTeX/tree/master/contrib/auto-render), an extension for *KaTeX*). Here I'll show a special case when we're using Jekyll and on GitHub Pages.
 
 First, insert the following code into `<head>`:
 ```html
@@ -33,7 +36,7 @@ First, insert the following code into `<head>`:
 
 Here `jQuery` works as an dependency for the following script. Get the latest jQuery from https://code.jquery.com/.
 
-Since GitHub Pages only supports kramdown and MathJax math engine,[^1][^2] the only method is to parse markdown files with kramdown and use $$\KaTeX$$ to render math formulas.
+Since GitHub Pages only supports kramdown and MathJax math engine,[^1][^2] the only method is to parse markdown files with kramdown and use *KaTeX* to render math formulas.
 
 Here kramdown has provided a solution:[^3]
 

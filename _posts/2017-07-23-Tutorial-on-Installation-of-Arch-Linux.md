@@ -1,5 +1,8 @@
 ---
-title: Install Arch Linux
+title: Tutorial on Installation of Arch Linux
+tags: [IT, Linux]
+redirect_from:
+    - /blog/install-arch-linux/
 ---
 
 Before the introduction, I'd like to redirect everyone who is willing to try Arch to install [Antergos](https://antergos.com/) or [Manjaro](https://manjaro.org/) instead, which both are derived from Arch. They are always coming top in popularity [statistics](https://distrowatch.com/popularity

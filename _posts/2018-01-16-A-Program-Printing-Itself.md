@@ -1,5 +1,8 @@
 ---
-title: A program that prints itself
+title: A Program Printing Itself
+tags: [IT, Computability Theory]
+redirect_from:
+    - /blog/a-program-that-prints-itself/
 ---
 
 Is it possible to find a program that prints itself?
@@ -48,4 +51,4 @@ Here $$ \langle R \rangle = \langle P_{\langle S \rangle}S \rangle $$.
 In fact it is a conclusion derived from the famous [recursion theorem](https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem). It ensures that self-reference is allowed in a TM. Therefore it is possible to construct a TM or program that prints itself.
 
 [^ntm_def]: It differs from deterministic one by multiple possible states after a state transition.
-[^cm]: https://www.edx.org/course/li-lun-ji-suan-ji-ke-xue-ji-chu-pekingx-04830260x-0
+[^cm]: https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem

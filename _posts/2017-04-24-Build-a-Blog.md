@@ -1,5 +1,8 @@
 ---
-title: Build a blog
+title: Build a Blog
+tags: [IT]
+redirect_from:
+    - /blog/build-blog/
 ---
 
 ## To start with

@@ -1,5 +1,8 @@
 ---
-title: Prepare website for HTTPS
+title: Prepare Website for HTTPS
+tags: [IT, HTTPS]
+redirect_from:
+    - /blog/prepare-for-https/
 ---
 
 [Let's Encrypt](https://letsencrypt.org/) is a famous free SSL certificate provider. Now take this as an example to build up HTTPS on your website.

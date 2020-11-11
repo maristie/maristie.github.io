@@ -8,8 +8,6 @@ description: >
 show_excerpts: false # set to true to show excerpts on the homepage
 
 minima:
-  date_format: "%b %-d, %Y"
-  
   social_links:
     linkedin: maristie
     github: maristie
@@ -18,8 +16,12 @@ minima:
 
 theme: minima
 
+# Enable pagination
+paginate: 30
+paginate_path: "/page/:num/"
+
 # URL format
-permalink: /:categories/:title/
+permalink: /:year/:month/:title
 
 # Kramdown settings
 kramdown:
@@ -33,7 +35,6 @@ defaults:
             type: posts
         values:
             layout: post
-            category: blog
 
 # Exclude files
 exclude:

@@ -1,5 +1,8 @@
 ---
-title: Intro to GnuPG
+title: Introduction to GnuPG
+tags: [IT, Privacy, Cryptography]
+redirect_from:
+    - /blog/intro-to-gnupg/
 ---
 
 PGP (Pretty Good Privacy) is an encryption program that provides cryptographic privacy and authentication for data communication (Refer to: https://en.wikipedia.org/wiki/Pretty_Good_Privacy). And OpenPGP is a standard that PGP software should follow. One of the software is [GnuPG](https://www.gnupg.org/).

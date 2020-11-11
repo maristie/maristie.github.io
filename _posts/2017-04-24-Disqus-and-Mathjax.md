@@ -1,5 +1,8 @@
 ---
-title: Add Disqus and Mathjax to website
+title: Disqus and Mathjax for Website
+tags: [IT, Math, LaTeX]
+redirect_from:
+    - /blog/disqus-mathjax/
 ---
 
 The only thing one needs to do is to add codes to blog htmls.

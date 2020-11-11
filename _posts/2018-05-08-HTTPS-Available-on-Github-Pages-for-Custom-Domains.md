@@ -1,5 +1,8 @@
 ---
-title: "Good news: GitHub Pages support HTTPS for custom domains"
+title: "HTTPS Available on GitHub Pages for Custom Domains"
+tags: [IT, HTTPS, Privacy]
+redirect_from:
+    - /blog/github-pages-support-https-for-custom-domain/
 ---
 
 _**Note**: as of May 9, 2018 GitHub Pages only issue certificates of the only domain filled in `Custom Domain`, therefore it would be impossible to access this website with `https://www.maristie.com` since the certicate does not include www subdomain._
@@ -8,7 +11,7 @@ Late-coming feature for GitHub Pages: [Custom domains on GitHub Pages gain suppo
 
 GitHub partnered with the famous free CA *Let's Encrypt*, and SSL/TLS certificates are now available directly on GitHub Pages without any intermediary like Cloudflare.
 
-## How to
+## How
 
 For ones using `ANAME`, `ALIAS` or `CNAME` records to resolve custom domains, the only thing to do is check the option box `Enforce HTTPS`. For others using `A` records, first update the IPv4 addresses of the records to
 

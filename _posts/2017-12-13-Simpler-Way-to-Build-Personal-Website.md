@@ -1,5 +1,8 @@
 ---
-title: Simplify personal website building
+title: Simpler Way to Build Personal Website
+tags: [IT]
+redirect_from:
+    - /blog/simplify-personal-website/
 ---
 
 ## Simple introduction

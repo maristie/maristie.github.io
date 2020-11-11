@@ -1,5 +1,8 @@
 ---
-title: Docker for Steam card farming
+title: Using Docker for Steam Card Farming
+tags: [IT, Virtualization]
+redirect_from:
+    - /blog/docker-for-steam-card-farming/
 ---
 
 Steam is a famous platform providing tens of thousands of PC games. Some of the Steam players prefer to wait for cards to drop naturally along with the progress of games. However, others may think it better to speed up the process of card collecting, either for themselves or even make a profit. Anyhow, in the information age, people would like to automate everything with the power of computers.

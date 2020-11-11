@@ -1,5 +1,8 @@
 ---
-title: Intro to input methods on Linux
+title: Introduction to IME Configurations on Linux
+tags: [IT, Linux]
+redirect_from:
+    - /blog/input-method/
 ---
 
 This is a simple recommendation for your IME on Arch Linux. For I seldom download something from repositories except the official one, I would just like to introduce IMEs that can be found in core, community or extra repos.

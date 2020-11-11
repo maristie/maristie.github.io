@@ -1,5 +1,8 @@
 ---
-title: Notice of site transfer
+title: Notice of Site Transfer
+tags: [Notice]
+redirect_from:
+    - /blog/notice-of-site-moving/
 ---
 
 Since now I do realize that it's kind of boring, or rather, meaningless to maintain a static website on the host of AWS on my own, as well as it's soon about to expire in February (in fact it's mainly used as a proxy), I decide that this domain name (www.maristie.site) will be no longer bound to the AWS server then.

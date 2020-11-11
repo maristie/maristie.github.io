@@ -1,5 +1,8 @@
 ---
 title: Database Project
+tags: [IT, Database]
+redirect_from:
+    - /blog/database-project/
 ---
 
 Visit our [Database Project](https://github.com/PKU-2017-Database/Social-Network).

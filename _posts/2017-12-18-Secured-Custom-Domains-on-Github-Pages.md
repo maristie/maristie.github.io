@@ -1,5 +1,8 @@
 ---
-title: Set up HTTPS for custom domain name on GitHub Pages
+title: Secured HTTPS Custom Domains on GitHub Pages
+tags: [IT, HTTPS]
+redirect_from:
+    - /blog/https-for-custom-domain-on-github-pages/
 ---
 
 Needless to say, GitHub Pages is now one of the best and most convenient services to host static webpages. It's free, easy to manage (via `git` version control) and able to process markdown files directly.

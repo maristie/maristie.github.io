@@ -1,5 +1,8 @@
 ---
-title: Differences between normalization, standardization and regularization
+title: Differences between Normalization, Standardization and Regularization
+tags: [IT, Machine Learning]
+redirect_from:
+    - /blog/differences-between-normalization-standardization-and-regularization/
 ---
 
 It is frequent to see the following three terms in machine learning: normalization, standardization and regularization. Here comes a short introduction to help to distinguish them.
