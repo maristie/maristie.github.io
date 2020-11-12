@@ -19,8 +19,8 @@ Let's think of VM (Virtual Machine). It's alright to run VMs on a server and run
 
 > Docker is a software technology providing containers, promoted by the company Docker, Inc. Docker provides an additional layer of abstraction and automation of operating-system-level virtualization on Windows and Linux.[^docker_wiki]
 
-![Docker Image](https://www.docker.com/sites/default/files/Package%20software%40x2.png)
-_From https://www.docker.com/what-container_
+![Docker Image](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-and-vm-transparent-bg.png)
+_From https://www.docker.com/resources/what-container_
 
 Take ASF for an example. For Windows users it's easy to configure everything since .NET core has been built-in. But for others, especially for Amazon Linux users, it's only a disaster of dependency. Imagine that you have to compile tens of dependencies and .NET core on VPS and overcome hundreds of bumps during the process.
 
