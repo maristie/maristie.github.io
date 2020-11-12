@@ -123,7 +123,7 @@ At first we have
 
 $$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}) + O(\log n) $$
 
-Note that $ T(\dfrac{n}{2^i}) $ has been magnified. If we try expanding the expression, 
+Note that $ T(\dfrac{n}{2^i}) $ was magnified. If we try expanding the expression, 
 
 $$
 \begin{aligned}
