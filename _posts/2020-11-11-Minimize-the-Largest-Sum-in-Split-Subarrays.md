@@ -22,7 +22,7 @@ Let's start from the DP solutions. Most of them are implemented bottom-up. One s
 Define the subroutine solving the problem above as `splitArray(arr, m)`.
 
 #### First Observation
-Observe that if `arr_1` is a subarray of `arr_2`, then `splitArray(arr_1, m)` $<$ `splitArray(arr_2, m)` holds for any $ m $. This can be simply proved because the minimum of largest subarray sum cannot be larger when any subset of elements in `arr_2` is removed.
+Observe that if `arr_1` is a subarray of `arr_2`, then `splitArray(arr_1, m)` $\le$ `splitArray(arr_2, m)` holds for any $ m $. This can be simply proved because the minimum of largest subarray sum cannot be larger when any subset of elements in `arr_2` is removed.
 
 ##### *Lemma 1*
 If `arr_1` $ \subseteq $ `arr_2`, then `splitArray(arr_1, m)` $ \le $ `splitArray(arr_2, m)`.
