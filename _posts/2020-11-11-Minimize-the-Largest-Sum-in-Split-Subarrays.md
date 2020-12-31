@@ -137,15 +137,15 @@ $$
 
 So we assume that $ T(n) = O(n) $, i.e. $T(n) \le cn - c'$. It can be proved by [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction) technique.
 
-Assume $ T(k) \le ck - c' $ holds for all $ 1 \le k \le n, k \in \mathbb{N} $, then
+Assume $ T(k) \le ck - c' $ holds for all $ 1 \le k \le n - 1, k \in \mathbb{N} $, then
 
 $$
 \begin{aligned}
-T(2n) &\le \sum_{i=1}^{\lceil \log n \rceil + 1} T(\lfloor\frac{n}{2^{i-1}}\rfloor) + c'(\log n + 1) \\
-&\le \sum_{i=0}^{\lceil \log n \rceil} (c \cdot (\lfloor\frac{n}{2^i}\rfloor) - c') + c'(\log n + 1)\\
-&\le c \cdot \sum_{i=0}^{\lceil \log n \rceil} (\lfloor\frac{n}{2^i}\rfloor)\\
-&\le c \cdot (2n - 1) \\
-&\le 2cn - c'
+T(n) &\le \sum_{i=1}^{\lceil \log n \rceil} T(\lfloor\frac{n}{2^i}\rfloor) + c'\log n \\
+&\le \sum_{i=1}^{\lceil \log n \rceil} (c \cdot (\lfloor\frac{n}{2^i}\rfloor) - c') + c'\log n \\
+&\le c \cdot \sum_{i=1}^{\lceil \log n \rceil} (\lfloor\frac{n}{2^i}\rfloor)\\
+&\le c \cdot (n - 1) \\
+&\le cn - c'
 \end{aligned}
 $$
 
