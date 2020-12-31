@@ -66,7 +66,7 @@ Again, let's get back to the subproblem breaking step:
 
 Define the time complexity of solving the original problem with the array length being $ n $ and number of subarrays being $ m $ as $ T(n, m) $. Then we have the following recurrence relation equation:
 
-$$ T(n, m) = \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}, m - 1) + O(\log n) $$
+$$ T(n, m) = \sum_{i=1}^{\lceil{\log n}\rceil} T(\lfloor\frac{n}{2^i}\rfloor, m - 1) + O(\log n) $$
 
 Unfortunately, it's hard to derive an analytical solution from it. But we can get an upper bound instead of an asymtotically tight one (as [big O notation](https://en.wikipedia.org/wiki/Big_O_notation) defines).
 
@@ -76,18 +76,18 @@ Note that $ T(n, m - 1) \le T(n, m) $ as $ T(n, m) $ can be broken into $ T(n, m
 Therefore,
 
 $$ 
-    T(n, m) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}, m) + O(\log n)
+    T(n, m) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\lfloor\frac{n}{2^i}\rfloor, m) + O(\log n)
 $$
 
 $ m $ can be regarded as a constant and removed now. Simplify $ T(n, m) $ as $ T(n) $, the equation can be rewritten in
 
-$$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}) + O(\log n) $$
+$$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\lfloor\frac{n}{2^i}\rfloor) + O(\log n) $$
 
 It's very similar to the required form of [*master theorem*](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)).
 
-$$ T(n) \le \lceil{\log n}\rceil \cdot T(\frac{n}{2}) + O(\log n) $$
+$$ T(n) \le \lceil{\log n}\rceil \cdot T(\lfloor\frac{n}{2}\rfloor) + O(\log n) $$
 
-Well, it's not deducible from *master theorem* for its non-constant coefficient. To remove the $ \log n $ coefficient, transform it into another variable $ k $ denoting $ \lceil\log n\rceil $.
+Well, it's not deducible from *master theorem* for its non-constant coefficient. To remove the $ \log n $ coefficient, transform it into another variable $ k $ denoting $ \lceil\log n\rceil $. When $ k \ge 1 $, 
 
 $$ \begin{aligned}
 T(2^k) &\le kT(2^{k - 1}) + O(k) \\
@@ -99,13 +99,13 @@ T(2^k) &\le kT(2^{k - 1}) + O(k) \\
 \end{aligned}
 $$
 
-Since $ k! $ is asymtotically equal to $ \sqrt{2\pi k}(\dfrac{k}{e})^k $ by [Stirling's approximation](https://en.wikipedia.org/wiki/Stirling%27s_approximation),
+Since $ k! $ is asymtotically equal to $ \sqrt{2\pi k}(\frac{k}{e})^k $ by [Stirling's approximation](https://en.wikipedia.org/wiki/Stirling%27s_approximation),
 
-$$ T(2^k) \le O(k^k(\frac{\sqrt{k}}{e^k} + 1)) = O(k^k) $$
+$$ T(2^k) = O(k^k(\frac{\sqrt{k}}{e^k} + 1)) = O(k^k) $$
 
 Finally convert $ k $ back to $ n $, we get
 
-$$ T(n) \le O({\log n}^{\log n}) $$
+$$ T(n) = O({\log n}^{\log n}) $$
 
 ### Linear Complexity
 Compare it with the approach using $ sum $.
@@ -121,46 +121,39 @@ So it depends on the value of $ n $ and $ sum $. But it's only a loose bound, an
 
 At first we have
 
-$$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\frac{n}{2^i}) + O(\log n) $$
+$$ T(n) \le \sum_{i=1}^{\lceil{\log n}\rceil} T(\lfloor\frac{n}{2^i}\rfloor) + O(\log n) $$
 
-Note that $ T(\dfrac{n}{2^i}) $ was magnified. If we try expanding the expression, 
-
-$$
-\begin{aligned}
-T(n) &\le (T(\frac{n}{2}) + T(\frac{n}{2^2}) + \dotsb + T(1)) + O(\log n) \\
-&\le (T(\frac{n}{2}) + O(1)) + (T(\frac{n}{2^2}) + O(1)) + \dotsb + (T(1) + O(1))) \\
-& = T(\frac{n}{2}) + T(\frac{n}{2^2}) + \dotsb + T(1)
-\end{aligned}
-$$
-
-As $ T(n) $ is obviously non-trivial and is at least more complex than $ O(1) $.
-
-Observe that
+Suppose $c_0$ and $c'$ are appropriate positive constants respectively for $T(n)$ and $O(\log n)$. Observe that
 
 $$
 \begin{aligned}
-T(1) &\le O(1) \\
-T(2) &\le T(1) = O(1) \\
-T(4) &\le T(2) + T(1) \le 2\cdot O(1) = O(2) \\
-T(8) &\le T(4) + T(2) + T(1) \le O(4) \\
+T(1) &\le c_0 \\
+T(2) &\le c_0 + c' \\
+T(4) &\le 2c_0 + 3c' \\
+T(8) &\le 4c_0 + 7c' \\
 &\dotsm
 \end{aligned}
 $$
 
-So we assume that $ T(n) \le O(\dfrac{n}2) = O(n) $. It can be proved by [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction) technique.
+So we assume that $ T(n) = O(n) $, i.e. $T(n) \le cn - c'$. It can be proved by [mathematical induction](https://en.wikipedia.org/wiki/Mathematical_induction) technique.
 
-Suppose $ n = 2^k $ here for convenience. For $ k = 0 $, $ T(1) = O(1) $ holds trivially. If $ T(2^i) \le O(2^i) $ holds for all $ 0 \le i \le k, i \in \mathbb{N} $
+Assume $ T(k) \le ck - c' $ holds for all $ 1 \le k \le n, k \in \mathbb{N} $, then
 
 $$
 \begin{aligned}
-T(2^{k + 1}) &\le \sum_{i=0}^k T(2^{i}) \\
-&\le \sum_{i=0}^k O(2^i) \\
-&= O(\sum_{i=0}^k 2^i) \\
-&= O(2^{k + 1})
+T(2n) &\le \sum_{i=1}^{\lceil \log n \rceil + 1} T(\lfloor\frac{n}{2^{i-1}}\rfloor) + c'(\log n + 1) \\
+&\le \sum_{i=0}^{\lceil \log n \rceil} (c \cdot (\lfloor\frac{n}{2^i}\rfloor) - c') + c'(\log n + 1)\\
+&\le c \cdot \sum_{i=0}^{\lceil \log n \rceil} (\lfloor\frac{n}{2^i}\rfloor)\\
+&\le c \cdot (2n - 1) \\
+&\le 2cn - c'
 \end{aligned}
 $$
 
-Therefore $ T(n) \le O(n) $ is true.
+as long as we choose $ c \ge c' + c_0$. For base case $n = 1$, $T(1) \le c_0 \le c - c'$ holds.
+
+
+
+Therefore $ T(n) = O(n) $ is true.
 
 ## Appendix
 A Java implementation.
