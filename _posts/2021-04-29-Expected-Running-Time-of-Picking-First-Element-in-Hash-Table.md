@@ -11,15 +11,15 @@ Before we delve into the detailed proof, let's walk through the basics of hash t
 
 ### Motivation
 
-The most direct motivation for such a data structure originates in access to sparsely distributed data in a relatively large domain. For dense data, we allocate an array and store them in a consecutive manner, which might incur a reasonable waste of space. But if the actual amount of data in an application is far less than its domain (possibly an infinite set), there is no point in preallocating space for all possible values.
+The most direct motivation for such a data structure originates in access to sparsely distributed data in a relatively large domain. For dense data, we allocate an array and store them in a consecutive manner, which might incur a reasonable waste of space. But if the actual amount of data in an application is far less than the cardinality of its domain (possibly an infinite set), there is no point in preallocating space for all possible values.
 
-For example, suppose that we have to maintain a dynamic set of $n$ elements within a domain of $\\{0, 1, \ldots, U - 1\\}$. Suppose furthur that the elements are uniformly distributed. If $n = 10U$ (allowing duplicates), it's reasonable to support dictionary operations by a straightforward array. When $n = \frac{U}{10}$, it's generally a bad idea to leave large parts of the array unused. To make things worse, if we want to store a limited number of strings from Latin alphabet without a strict bound on the length, it is impossible to allocate a directly-indexed array to hold all possible values.
+For example, suppose that we have to maintain a dynamic set of $s$ elements within a domain of $\\{0, 1, \ldots, U - 1\\}$. Suppose furthur that the elements are uniformly distributed. If $s = 10U$ (allowing duplicates), it's reasonable to support dictionary operations by a straightforward array. When $s = \frac{U}{10}$, it's generally a bad idea to leave large parts of the array unused. To make things worse, if we want to store a limited number of strings from Latin alphabet without a strict bound on the length, it is impossible to allocate a directly-indexed array to hold all possible values.
 
 ### Intuition
 
 The major difficulty is that the total number of elements in a dictionary may not match the cardinality of the domain, while we hope to maintain the random access property of an array. Given that the space for storage should be in linear in the size of the dictionary at best, an intuitive try is to map the values in domain to $\\{0, 1, \ldots, n - 1\\}$, where $n$ denotes the size of dictionary. Each value in the domain is mapped to an element in $\\{0, 1, \ldots, n - 1\\}$, so by nature there would be multiple values mapped to the same element in codomain.
 
-In one extreme case, we can construct a linked list for all data which takes exactly $\Theta (n)$ space. The disadvantage is that search and deletion operations can take $O(n)$ time in the worst case, which is undesirable. Ideally, all the data should form a one-to-one mapping to the index of an array with length $n$, providing $O(1)$ mapping computation, $O(1)$ random access and dictionary operations without any redundance in space.
+In one extreme case, we can construct a linked list for all data which takes exactly $\Theta (n)$ space. The disadvantage is that search and deletion operations can take $O(n)$ time in the worst case, which is undesirable. Ideally, all the data should be mapped to the index of an array with length $n$, providing $O(1)$ mapping computation, $O(1)$ random access and dictionary operations with tolerable redundance in space.
 
 ### Issues
 
@@ -27,7 +27,7 @@ We usually call such a mapping process as **hashing**, and the function such tha
 
 #### Deal with collision
 
-As noted above, the hash function is many-to-one in essence, therefore it's inevitable to consider such cases that $a \in S, b \in S, a \neq b \land h(a) = h(b) $. For simplicity, we assume that the elements in the dictionary are distinct (i.e., a normal set).
+As noted above, the hash function is many-to-one in essence (for $card(S) \gg n $), therefore it's inevitable to consider such cases that $a \in S, b \in S, a \neq b \land h(a) = h(b) $. For simplicity, we assume that the elements in the dictionary are distinct (i.e., a normal set).
 
 Such elements should be distinguished even if they have identical hash values. A natural approach is to create a linked list for each index in the array, and store the elements which are mapped to the same hash value in the linked list. In this way, we access an element first by its hash value as index in the array, followed by a trivial linear search in the linked list. Insertion, search and deletion operations are analogous to normal linked list.
 
@@ -41,9 +41,9 @@ The very first problem is to choose an appropriate hash function. Recall that th
 
 In principle, the hash function should map $\forall a \in S$ to any value in the function range with equal probability. It is not contradictory with the deterministic mapping requirement, since it is not based on a single element, but the entire domain $S$. And it should hold independent of any preceding sequence of hashing.
 
-Although it is impossible to know the probability distribution of hashing sequence beforehand, there are some hash functions that work quite satisfactorily in practice. One of them is called *division method*, namely $h(a) = a \mod m, m \in \mathbb{N}$. As a rule of thumb, $m$ should be a prime number that is unlikely to depend on the distribution of sequence in domain $S$, and should avoid specific pitfalls near a power of 2.
+Although it is impossible to know the probability distribution of hashing sequence beforehand, there are some hash functions that work quite satisfactorily in practice. One of them is called *division method*, namely $h(a) = a \mod m, m \in \mathbb{N}^+$. As a rule of thumb, $m$ should be a prime number that is unlikely to depend on the distribution of sequence in domain $S$, and should avoid specific pitfalls near a power of 2.
 
-Another approach is *multiplication method*. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\\{0, 1, \ldots, n - 1\\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfy the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
+Another approach is *multiplication method*. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\\{0, 1, \ldots, n - 1\\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfies the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
 
 #### Dynamic table
 
@@ -57,9 +57,9 @@ Finally, let's come back to the original problem: the expected running time of p
 
 As an example in Java, suppose that we have a non-empty `HashSet s`. We find the first element by calling `s.iterator().next()`, which performs exactly the above steps.
 
-Based on the simple uniform hashing assumption, we claim that the expected running time of picking first element is constant (i.e., $O(1)$). I will give a rigorous proof as follows.
+Based on the simple uniform hashing assumption and chaining method to deal with collisions, we claim that the expected running time of picking first element is constant (i.e., $O(1)$). I will give a mathematical proof as follows.
 
-First, let random variable $X$ denote the distance from the head of hash table to the first non-empty slot after randomly and independently inserting $s = \lvert S \rvert $ elements into a hash table of size $n$, and $X_i$ denote the distance from head to the *i*th inserted element. It is easy to see that the running time $T(s, n) = \Theta (X + 1)$, where $1$ is to ensure that the time cost is positive even $X = 0$.
+First, let random variable $X$ denote the distance from the head of hash table to the first non-empty slot after randomly and independently inserting $s = \lvert S \rvert $ elements into a hash table of size $n$, and $X_i$ denote the distance from head to the *i*th inserted element. Here distance $d$ denotes the index of slot in the array. It is easy to see that the running time $T(s, n) = \Theta (X + 1)$, where $1$ is to ensure that the time cost is positive even if $X = 0$.
 
 Observe that from the definition of $X$ and $X_i$, we have
 
@@ -71,7 +71,7 @@ Pr\{X \geq k\}
 \end{aligned}
 $$
 
-Note that the second line holds by independence of $X_i, i = 0, 1, \ldots, s - 1$.
+Note that the second line holds by independence of $X_i, i = 1, 2, \ldots, s$.
 
 We want to prove $E[X] = O(1)$. From the definition of expectation, it's easy to prove that
 
@@ -108,4 +108,4 @@ E[X]
 \end{aligned}
 $$
 
-which is a constant as long as $\alpha$ is a positive constant. We thus conclude that $E[X] = O(1)$, which completes our proof.
+which is a constant as long as $\alpha$ is bounded below by a positive constant. As we discussed in *dynamic table* section, this assumption generally holds in practice. We thus conclude that $E[X] = O(1)$, which completes our proof.
