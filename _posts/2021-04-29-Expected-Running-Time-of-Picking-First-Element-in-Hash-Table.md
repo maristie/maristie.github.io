@@ -13,17 +13,17 @@ Before we delve into the detailed proof, let's walk through the basics of hash t
 
 The most direct motivation for such a data structure originates in access to sparsely distributed data in a relatively large domain. For dense data, we allocate an array and store them in a consecutive manner, which might incur a reasonable waste of space. But if the actual amount of data in an application is far less than its domain (possibly an infinite set), there is no point in preallocating space for all possible values.
 
-For example, suppose that we have to maintain a dynamic set of $n$ elements within a domain of $0, 1, \ldots, U - 1$. Suppose furthur that the elements are uniformly distributed. If $n = 10U$ (allowing duplicates), it's reasonable to support dictionary operations by a straightforward array. When $n = \frac{U}{10}$, it's generally a bad idea to leave large parts of the array unused. To make things worse, if we want to store a limited number of strings from Latin alphabet without a strict bound on the length, it is impossible to allocate a directly-indexed array to hold all possible values.
+For example, suppose that we have to maintain a dynamic set of $n$ elements within a domain of $\\{0, 1, \ldots, U - 1\\}$. Suppose furthur that the elements are uniformly distributed. If $n = 10U$ (allowing duplicates), it's reasonable to support dictionary operations by a straightforward array. When $n = \frac{U}{10}$, it's generally a bad idea to leave large parts of the array unused. To make things worse, if we want to store a limited number of strings from Latin alphabet without a strict bound on the length, it is impossible to allocate a directly-indexed array to hold all possible values.
 
 ### Intuition
 
-The major difficulty is that the total number of elements in a dictionary may not match the cardinality of the domain, while we hope to maintain the random access property of an array. Given that the space for storage should be in linear in the size of the dictionary at best, an intuitive try is to map the values in domain to $0, 1, \ldots, n - 1$, where $n$ denotes the size of dictionary. Each value in the domain is mapped to an element in $0, 1, \ldots, n - 1$, so by nature there would be multiple values mapped to the same element in codomain.
+The major difficulty is that the total number of elements in a dictionary may not match the cardinality of the domain, while we hope to maintain the random access property of an array. Given that the space for storage should be in linear in the size of the dictionary at best, an intuitive try is to map the values in domain to $\\{0, 1, \ldots, n - 1\\}$, where $n$ denotes the size of dictionary. Each value in the domain is mapped to an element in $\\{0, 1, \ldots, n - 1\\}$, so by nature there would be multiple values mapped to the same element in codomain.
 
 In one extreme case, we can construct a linked list for all data which takes exactly $\Theta (n)$ space. The disadvantage is that search and deletion operations can take $O(n)$ time in the worst case, which is undesirable. Ideally, all the data should form a one-to-one mapping to the index of an array with length $n$, providing $O(1)$ mapping computation, $O(1)$ random access and dictionary operations without any redundance in space.
 
 ### Issues
 
-We usually call such a mapping process as **hashing**, and the function such that $\forall a \in S, h(a) = k, k \in \{0, 1, \ldots, n - 1\}$ as **hash function**. We have several issues to solve before it can be put into practice.
+We usually call such a mapping process as **hashing**, and the function such that $\forall a \in S, h(a) = k, k \in \\{0, 1, \ldots, n - 1\\}$ as **hash function**. We have several issues to solve before it can be put into practice.
 
 #### Deal with collision
 
@@ -37,13 +37,13 @@ As an aside, there is another approach called *open addressing* to solve collisi
 
 #### Choice of hash function
 
-The very first problem is to choose an appropriate hash function. Recall that the hash function should deterministically hash $\forall a \in S$ to any value in $\{0, 1, \ldots, n - 1\}$. (Or we have no means to access an element again if it's hashed randomly.) We have discussed approaches toward collisions, so in the first place the hash function should cause as less collisions as possible. Besides, computationally expensive hash functions are not desirable.
+The very first problem is to choose an appropriate hash function. Recall that the hash function should deterministically hash $\forall a \in S$ to any value in $\\{0, 1, \ldots, n - 1\\}$. (Or we have no means to access an element again if it's hashed randomly.) We have discussed approaches toward collisions, so in the first place the hash function should cause as less collisions as possible. Besides, computationally expensive hash functions are not desirable.
 
 In principle, the hash function should map $\forall a \in S$ to any value in the function range with equal probability. It is not contradictory with the deterministic mapping requirement, since it is not based on a single element, but the entire domain $S$. And it should hold independent of any preceding sequence of hashing.
 
 Although it is impossible to know the probability distribution of hashing sequence beforehand, there are some hash functions that work quite satisfactorily in practice. One of them is called *division method*, namely $h(a) = a \mod m, m \in \mathbb{N}$. As a thumb of rule, $m$ should be a prime number that is unlikely to depend on the distribution of sequence in domain $S$, and should avoid specific pitfalls near a power of 2.
 
-Another approach is *multiplication method*. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\{0, 1, \ldots, n - 1\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfy the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
+Another approach is *multiplication method*. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\\{0, 1, \ldots, n - 1\\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfy the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
 
 #### Dynamic table
 
@@ -79,7 +79,7 @@ $$
 E[X] = Pr\{X \geq 1\} + Pr\{X \geq 2\} + \ldots + Pr\{X \geq n - 1\}
 $$
 
-for a discrete distribution in $\{0, 1, \ldots, n - 1\}$. Thus,
+for a discrete distribution in $\\{0, 1, \ldots, n - 1\\}$. Thus,
 
 $$ \begin{aligned}
 E[X]
