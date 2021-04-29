@@ -41,15 +41,15 @@ The very first problem is to choose an appropriate hash function. Recall that th
 
 In principle, the hash function should map $\forall a \in S$ to any value in the function range with equal probability. It is not contradictory with the deterministic mapping requirement, since it is not based on a single element, but the entire domain $S$. And it should hold independent of any preceding sequence of hashing.
 
-Although it is impossible to know the probability distribution of hashing sequence beforehand, there are some hash functions that work quite satisfactorily in practice. One of them is called $division method$, namely $h(a) = a \mod m, m \in \mathbb{N}$. As a thumb of rule, $m$ should be a prime number that is unlikely to depend on the distribution of sequence in domain $S$, and should avoid specific pitfalls near a power of 2.
+Although it is impossible to know the probability distribution of hashing sequence beforehand, there are some hash functions that work quite satisfactorily in practice. One of them is called *division method*, namely $h(a) = a \mod m, m \in \mathbb{N}$. As a thumb of rule, $m$ should be a prime number that is unlikely to depend on the distribution of sequence in domain $S$, and should avoid specific pitfalls near a power of 2.
 
-Another approach is multiplication method. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\{0, 1, \ldots, n - 1\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfy the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
+Another approach is *multiplication method*. The basic idea is to multiply the key by a fraction, thereafter furthur mapping the decimal part uniformly to $\{0, 1, \ldots, n - 1\}$. It is usually done by multiplication and bit shifting in practice for performance reasons. In general, any method that satisfy the above requirement is all right, but the performance differs under certain distributions. The implementation varies greatly in standard libraries of programming languages and applications, depending on specific use cases. Refer to *CLRS 11.3* for further reading.
 
 #### Dynamic table
 
 One minor issue is to expand or contract the hash table on demand. It is hard to keep the size of hash table array exactly equal to the number of elements in the dictionary efficiently, as memory allocation is by ad hoc paging and thus non-consecutive. For this reason, we must tolerate some degree of unused space. The ratio of $\alpha = \frac {card(S)}n$ is called *load factor*. Intuitively, the higher load factor, the more collisions; on the contrary, the lower load factor, the more wasted space.
 
-This is why we want to keep the load factor varying in a controlled range. *CLRS 17.4* gives an excellent illustration on a more general issue: maintenance of an array-based data structure of dynamic size. In conclusion, the expansion and contraction of such a dynamic table can be accomplished in amortized constant time, thereby causing no change to the asymptotic running time of operations on the data structure. In the case of hash tables, we have to make a trade-off, and the decision depends on the use case.
+This is why we want to keep the load factor varying in a controlled range. *CLRS 17.4* gives an excellent illustration on a more general issue: maintenance of an array-based data structure of dynamic size. In conclusion, the expansion and contraction of such a dynamic table can be accomplished in amortized constant time, thereby causing no change to the asymptotic running time of operations on the data structure. In the case of hash tables, we have to make trade-offs, and the decision depends on the use case.
 
 ## Expected Running Time of Picking First Element in Hash Table
 
@@ -59,7 +59,7 @@ As an example in Java, suppose that we have a non-empty `HashSet s`. We find the
 
 Based on the simple uniform hashing assumption, we claim that the expected running time of picking first element is constant (i.e., $O(1)$). I will give a rigorous proof as follows.
 
-First, let random variable $X$ denote the distance from the head of hash table to the first non-empty slot after randomly and independently inserting $s = |S|$ elements into a hash table of size $n$, and $X_i$ denote the distance from head to the *i*th inserted element. It is easy to see that the running time $T(s, n) = \Theta (X + 1)$, where $1$ is to ensure that the time cost is positive even $X = 0$.
+First, let random variable $X$ denote the distance from the head of hash table to the first non-empty slot after randomly and independently inserting $s = \lvert S \rvert $ elements into a hash table of size $n$, and $X_i$ denote the distance from head to the *i*th inserted element. It is easy to see that the running time $T(s, n) = \Theta (X + 1)$, where $1$ is to ensure that the time cost is positive even $X = 0$.
 
 Observe that from the definition of $X$ and $X_i$, we have
 
