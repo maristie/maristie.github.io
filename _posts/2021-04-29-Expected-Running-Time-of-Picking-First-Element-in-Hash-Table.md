@@ -65,8 +65,8 @@ Observe that from the definition of $X$ and $X_i$, we have
 
 $$ \begin{aligned}
 Pr\{X \geq k\}
-&= Pr\{X_1 \geq k \land X_2 \geq k \ldots \land X_n \geq k\} \\
-&= Pr\{X_1 \geq k\} \cdot Pr\{X_2 \geq k\} \cdot \ldots \cdot Pr\{X_n \geq k\} \\
+&= Pr\{X_1 \geq k \land X_2 \geq k \ldots \land X_s \geq k\} \\
+&= Pr\{X_1 \geq k\} \cdot Pr\{X_2 \geq k\} \cdot \ldots \cdot Pr\{X_s \geq k\} \\
 &= (\frac{n - k}n)^s
 \end{aligned}
 $$
