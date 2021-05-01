@@ -47,7 +47,7 @@ Another approach is *multiplication method*. The basic idea is to multiply the k
 
 #### Dynamic table
 
-One minor issue is to expand or contract the hash table on demand. It is hard to keep the size of hash table array exactly equal to the number of elements in the dictionary efficiently, as memory allocation is by ad hoc paging and thus non-consecutive. For this reason, we must tolerate some degree of unused space. The ratio of $\alpha = \frac {card(S)}n$ is called *load factor*. Intuitively, the higher load factor, the more collisions; on the contrary, the lower load factor, the more wasted space.
+One minor issue is to expand or contract the hash table on demand. It is hard to keep the size of hash table array exactly equal to the number of elements in the dictionary efficiently, as memory allocation in heap area is by an ad hoc [`brk`](https://man7.org/linux/man-pages/man2/brk.2.html) system call (in UNIX, for example) and thus non-consecutive. For this reason, we must tolerate some degree of unused space. The ratio of $\alpha = \frac {card(S)}n$ is called *load factor*. Intuitively, the higher load factor, the more collisions; on the contrary, the lower load factor, the more wasted space.
 
 This is why we want to keep the load factor varying in a controlled range. *CLRS 17.4* gives an excellent illustration on a more general issue: maintenance of an array-based data structure of dynamic size. In conclusion, the expansion and contraction of such a dynamic table can be accomplished in amortized constant time, thereby causing no change to the asymptotic running time of operations on the data structure. In the case of hash tables, we have to make trade-offs, and the decision depends on the use case.
 
