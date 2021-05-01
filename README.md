@@ -6,4 +6,4 @@ redirect_from:
     - /about/
 ---
 
-This is a simple and **irregularly** updated personal blog authored by a backend engineer.
+This is a simple and irregularly updated personal blog out of interest.
