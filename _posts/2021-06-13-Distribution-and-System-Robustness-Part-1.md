@@ -104,7 +104,7 @@ Nodes can enter or leave the network at their discretion without any disruption 
 
 It's worth mentioning that those reliability gains are not free. Even for $O(\log n)$ look-ups in theory, such operations suffer from significantly more message exchanges and network communication. As a result, network delay and bandwidth limit place strict constraints on the application of DHTs, particularly in the public Internet. Also, only point look-ups are supported by DHTs (just like native hash tables), therefore it's not suitable for range queries, which could trigger an excessively large amount of look-up traffic.
 
-#### Malicious attacks, again
+#### Malicious attacks, revisited
 
 Just like potential malicious nodes in Tor network, we could be faced with such nodes in distributed data storage services as well, especially in the public Internet. Attackers could launch [Sybil attacks](https://en.wikipedia.org/wiki/Sybil_attack) against such systems, controlling a large number of nodes and imposing substantial influence on the system.
 
