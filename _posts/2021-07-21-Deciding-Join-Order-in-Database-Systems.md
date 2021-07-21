@@ -180,6 +180,7 @@ $$
 which is exactly the well-known [Catalan number](https://en.wikipedia.org/wiki/Catalan_number) given by $\frac{1}{n+1}\binom{2n}{n}$.
 
 Finally, we put missing $n$ leaf nodes to make it a full binary tree. When the leaf nodes are distinct, we have
+
 $$
 \begin{aligned}
 \text{count}(n) &= b(n-1) \cdot n! \\
@@ -187,6 +188,7 @@ $$
 &= \frac{(2(n-1))!}{(n-1)!}
 \end{aligned}
 $$
+
 different full binary trees. When $n = 10$, $\text{count}(n) = 17,643,225,600$, which is surely unacceptable for modern commodity hardware.
 
 ### Dynamic Programming
@@ -199,7 +201,7 @@ $$
 OPT(S) =
   \begin{cases}
     \begin{alignedat}{}
-      &\min_{S' \subset S \land S' \neq \empty} \{OPT(S') + OPT(S - S') + c_{S', S-S'}\}  &\text{if card}(S) > 1,
+      &\min_{S' \subset S \land S' \neq \emptyset} \{OPT(S') + OPT(S - S') + c_{S', S-S'}\}  &\text{if card}(S) > 1,
       \\
       &0 &\text{otherwise}.
     \end{alignedat}
@@ -233,25 +235,32 @@ from typing import FrozenSet, Iterable, List, Tuple, Union
 
 
 def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
-    """Returns minimum join cost with an optimal join order as a nested tuple.
+    """Return minimum join cost with an optimal join order as a nested tuple.
     
-    relations: a list of positive integers denoting the number of blocks occupied by each relation.
+    Parameters:
+    relations - a list of positive integers denoting the number of blocks
+        occupied by each relation.
     """
     def join_cost(outer: Counter, inner: Counter) -> int:
-        """Returns join cost of outer and inner relations represented as counters."""
+        """Return join cost of outer and inner relations represented as counters."""
         return prod(outer.elements()) * (prod(inner.elements()) + 1)
 
     def powerset(counter: Counter, total: int) -> Iterable[Iterable]:
-        """Returns non-empty nor full members of power set of passed multiset with its total number of elements."""
+        """Return non-empty nor full members of power set of passed multiset.
+
+        Parameters:
+        counter - the multiset represented by a counter
+        total - number of elements in multiset"""
         return chain.from_iterable(combinations(counter.elements(), r) for r in range(1, total))
 
     def frozen_counter(counter: Counter) -> FrozenSet[Tuple]:
-        """Returns a frozen counter represented in frozen set of key-value pairs in counter."""
+        """Return a frozen counter i.e. frozen set of key-value pairs in counter."""
         return frozenset(counter.items())
 
     @functools.cache
     def min_join_cost(relations: FrozenSet[Tuple]) -> Tuple[int, Tuple[Counter, Counter]]:
-        """Returns minimum join cost with a pair of joined relations represented in counters."""
+        """Returns minimum join cost with a pair of relations whose joining
+        results in the optimal cost."""
         univ = Counter(dict(relations))
         total = sum(univ.values())
         return min(((min_join_cost(frozen_counter(subset))[0]
