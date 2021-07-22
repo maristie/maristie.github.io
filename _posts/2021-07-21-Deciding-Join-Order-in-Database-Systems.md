@@ -199,13 +199,12 @@ Consider dividing the original set of relations into two non-empty sets $S'$ and
 
 $$
 OPT(S) =
+\begin{equation*}
   \begin{cases}
-    \begin{alignedat}{}
-      &\min_{S' \subset S \land S' \neq \emptyset} \{OPT(S') + OPT(S - S') + c_{S', S-S'}\}  &\text{if card}(S) > 1,
-      \\
-      &0 &\text{otherwise}.
-    \end{alignedat}
+    \min_{S' \subset S \land S' \neq \emptyset} \{OPT(S') + OPT(S - S') + c_{S', S-S'}\}  &\text{if card}(S) > 1, \\
+    0 &\text{otherwise}.
   \end{cases}
+\end{equation*}
 $$
 
 Minimum selection takes $\Theta(2^{\text{card}(S)})$ time. So for each subset $S'$ of $S$ such that $\text{card}(S') > 1$, we sum their evaluation time costs:
@@ -223,64 +222,70 @@ which evaluates to $T(10) = 59049$, taking drastically less time than brute-forc
 
 #### Implementation in Python
 
-For simplicity, we assume all joins degenerate to Cartesian products and the only available join algorithm is nested-loop block join.
+For simplicity, we assume all joins degenerate to Cartesian products and the only available join algorithm is the general-purpose nested-loop block join.
 
 ```python
+import collections
 import functools
+import math
 import operator
-from collections import Counter
 from itertools import chain, combinations
-from math import prod
-from typing import FrozenSet, Iterable, List, Tuple, Union
+from typing import Iterator, List, Tuple, Union
+
+
+class Multiset(collections.Counter):
+    def __hash__(self):
+        return hash(frozenset(self.items()))
+
+    def __iter__(self):
+        return self.elements()
+
+    def __len__(self):
+        return sum(self.values())
+
+    def __sub__(self, other: 'Multiset') -> 'Multiset':
+        return Multiset(super().__sub__(other))
+
+    def powerset(self) -> Iterator['Multiset']:
+        """Return an iterator of non-empty proper subsets."""
+        return map(Multiset, chain.from_iterable(combinations(self, r)
+                                                 for r in range(1, len(self))))
 
 
 def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
     """Return minimum join cost with an optimal join order as a nested tuple.
-    
+
     Parameters:
     relations - a list of positive integers denoting the number of blocks
         occupied by each relation.
     """
-    def join_cost(outer: Counter, inner: Counter) -> int:
-        """Return join cost of outer and inner relations represented as counters."""
-        return prod(outer.elements()) * (prod(inner.elements()) + 1)
-
-    def powerset(counter: Counter, total: int) -> Iterable[Iterable]:
-        """Return non-empty nor full members of power set of passed multiset.
-
-        Parameters:
-        counter - the multiset represented by a counter
-        total - number of elements in multiset"""
-        return chain.from_iterable(combinations(counter.elements(), r) for r in range(1, total))
-
-    def frozen_counter(counter: Counter) -> FrozenSet[Tuple]:
-        """Return a frozen counter i.e. frozen set of key-value pairs in counter."""
-        return frozenset(counter.items())
-
     @functools.cache
-    def min_join_cost(relations: FrozenSet[Tuple]) -> Tuple[int, Tuple[Counter, Counter]]:
-        """Returns minimum join cost with a pair of relations whose joining
-        results in the optimal cost."""
-        univ = Counter(dict(relations))
-        total = sum(univ.values())
-        return min(((min_join_cost(frozen_counter(subset))[0]
-                    + min_join_cost(frozen_counter(univ - subset))[0]
-                    + join_cost(subset, univ - subset), (subset, univ - subset))
-                    for subset in map(Counter, powerset(univ, total))),
+    def min_join_cost(rels: Multiset) -> Tuple[int, Tuple[Multiset, Multiset]]:
+        """Return minimum join cost with a pair of relations whose joining
+        results in the optimal cost.
+        """
+        def join_cost(outer, inner):
+            """Return nested-loop block join cost of outer and inner relations."""
+            return math.prod(outer) * (math.prod(inner) + 1)
+        return min(((min_join_cost(subset)[0] + min_join_cost(rels - subset)[0]
+                    + join_cost(subset, rels - subset),
+                    (subset, rels - subset))
+                    for subset in rels.powerset()),
                    key=operator.itemgetter(0),
-                   default=(0, None))
+                   default=(0,))
 
-    def reconstruct_join_order(relations: Counter) -> Union[int, Tuple]:
-        """Returns the nested tuple denoting an optimal join order."""
-        if sum(relations.values()) == 1:
-            return next(relations.elements())
+    def reconstruct_join_order(rels: Multiset) -> Union[int, Tuple]:
+        """Return the nested tuple denoting an optimal join order."""
+        if len(rels) == 1:
+            return next(iter(rels))
         else:
-            subset, comp = min_join_cost(frozen_counter(relations))[1]
+            subset, comp = min_join_cost(rels)[1]
             return reconstruct_join_order(subset), reconstruct_join_order(comp)
 
-    return min_join_cost(frozen_counter(Counter(relations)))[0], reconstruct_join_order(Counter(relations))
+    return min_join_cost(Multiset(relations))[0], reconstruct_join_order(Multiset(relations))
 
 
+# A simple test case
 cost, join_order = opt_join_order([10, 500, 100, 1000, 20])
 print(f'cost={cost}, join_order={join_order}')
 ```
