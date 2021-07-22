@@ -40,7 +40,7 @@ Let us get back to the original problem. To select qualified employees, we certa
 
 #### Cartesian product
 
-Before answering it, we introduce a common operation in math called *Cartesian product*. Say there are $m$ x-coordinates and $n$ y-coordinates, from which we want to get an ordered pair $(x, y)$. Each x-coordinate can be combined with every y-coordinate, and vice versa. For example, if we select x-coordinate from a set $\{-1, 1\}$ and y-coordinate from $\{1, 2\}$, then it results in $\{(-1, 1), (-1, 2), (1, 1), (1, 2)\}$ whose cardinality is $2\times2=4$. Generally a Cartesian product would generate $mn$ elements.
+Before answering it, we introduce a common operation in math called *Cartesian product*. Say there are $m$ x-coordinates and $n$ y-coordinates, from which we want to get an ordered pair $(x, y)$. Each x-coordinate can be combined with every y-coordinate, and vice versa. For example, if we select x-coordinate from a set $\\{-1, 1\\}$ and y-coordinate from $\\{1, 2\\}$, then it results in $\\{(-1, 1), (-1, 2), (1, 1), (1, 2)\\}$ whose cardinality is $2\times2=4$. Generally a Cartesian product would generate $mn$ elements.
 
 #### From Cartesian product to join
 
@@ -105,16 +105,17 @@ Evaluating joins on relations residing on disks is definitely expensive. In othe
 ### Matrix Multiplication Order
 
 We're given an ordered sequence of matrices and we wish to compute the following product
+
 $$
 M_1 M_2 \cdots M_n
 $$
+
 Suppose it's a legal ordering and produces a well-defined product in terms of linear algebra.
 
 From the associativity of matrix multiplication, we can pair any neighboring two matrices, compute their product and replace the original two matrices with the newly computed matrix product, without affecting the correctness of the final result. For example, if the sequence consists of $M_1 M_2 M_3$, we can compute the final product in two different ways:
-$$
-(M_1(M_2 M_3)) \\
-((M_1 M_2)M_3)
-$$
+
+- $(M_1(M_2 M_3))$
+- $((M_1 M_2)M_3)$
 
 Suppose further that we use the subroutine below to compute matrix multiplication:
 ```python
@@ -145,10 +146,10 @@ With the help of advanced join algorithms, we need far less time for many specif
 
 Note especially that unlike matrix multiplications, joins are not only associative but also *commutative*, which contributes to much more flexible arrangements of join order. For example, if we wish to join three relations $r_1$, $r_2$, $r_3$, we may choose any of the join orders below with corresponding time cost followed:
 
-- $((r_1 r_2) r_3)$, with cost $c_{1,2} + c_{\{1,2\}, 3}$
-- $((r_2 r_1) r_3)$, with cost $c_{2,1} + c_{\{1,2\}, 3}$
-- $(r_3 (r_1 r_2))$, with cost $c_{1,2} + c_{3, \{1,2\}}$
-- $(r_3 (r_2 r_1))$, with cost $c_{2,1} + c_{3, \{1,2\}}$
+- $((r_1 r_2) r_3)$, with cost $c_{1,2} + c_{\\{1,2\\}, 3}$
+- $((r_2 r_1) r_3)$, with cost $c_{2,1} + c_{\\{1,2\\}, 3}$
+- $(r_3 (r_1 r_2))$, with cost $c_{1,2} + c_{3, \\{1,2\\}}$
+- $(r_3 (r_2 r_1))$, with cost $c_{2,1} + c_{3, \\{1,2\\}}$
 - $\cdots$
 
 where braces in the subscription of $c$ denotes a joined relation. Notice that different join orders have different costs, but the resulting relation remains unchanged.
@@ -218,7 +219,7 @@ T(n) &= \sum_{k=2}^{n}\sum_{\text{card}(S')=k} \Theta(2^{\text{card}(S')}) \\
 \end{aligned}
 $$
 
-which evaluates to $T(10) = 59049$, taking drastically less time than brute-force. In addition, we can record the current minimum join cost and prune unnecessary searches to save more time.
+which evaluates to $T(10) \approx 59049$ unit operations, taking drastically less time than brute-force. In addition, we can record the current minimum join cost and prune unnecessary searches to save more time.
 
 #### Implementation in Python
 
@@ -279,15 +280,16 @@ def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
         if len(rels) == 1:
             return next(iter(rels))
         else:
-            subset, comp = min_join_cost(rels)[1]
-            return reconstruct_join_order(subset), reconstruct_join_order(comp)
+            return tuple(map(reconstruct_join_order, min_join_cost(rels)[1]))
 
-    return min_join_cost(Multiset(relations))[0], reconstruct_join_order(Multiset(relations))
+    return (min_join_cost(Multiset(relations))[0],
+            reconstruct_join_order(Multiset(relations)))
 
 
-# A simple test case
-cost, join_order = opt_join_order([10, 500, 100, 1000, 20])
-print(f'cost={cost}, join_order={join_order}')
+if __name__ == '__main__':
+    # A simple test case
+    cost, join_order = opt_join_order([10, 500, 100, 1000, 20])
+    print(f'cost={cost}, join_order={join_order}')
 ```
 
 ### Dealing with More Relations
