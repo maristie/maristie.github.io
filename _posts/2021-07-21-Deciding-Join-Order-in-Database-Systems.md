@@ -296,4 +296,4 @@ if __name__ == '__main__':
 
 Though not commonly seen, there are cases in which we wish to join a large number of relations. Dynamic programming no longer satisfies our needs now, or else the time saving in actual join operations is more than offset by the cost of optimal join order computation.
 
-In practice, many database systems simply employ a greedy strategy to decide the join order. It is worthy of note that PostgreSQL implements a heuristic [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) to search for a possible global optimum.
+In practice, many database systems simply employ a greedy strategy to decide the join order among a larger number of relations aside from regular dynamic programming approach. It is worthy of note that PostgreSQL implements a heuristic [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) to find a possible global optimum in a large search space.
