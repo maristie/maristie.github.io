@@ -243,10 +243,15 @@ import functools
 import math
 import operator
 from itertools import chain, combinations
-from typing import Iterator, List, Tuple, Union
+from typing import Callable, Iterable, Iterator, List, Optional, Tuple, Union, cast
+
+JoinOrder = Union[int, Tuple]
+JoinPair = Tuple['Multiset', 'Multiset']
 
 
 class Multiset(collections.Counter):
+    __init__: Callable[[Iterable], None]
+
     def __hash__(self):
         return hash(frozenset(self.items()))
 
@@ -265,7 +270,7 @@ class Multiset(collections.Counter):
                                                  for r in range(1, len(self))))
 
 
-def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
+def opt_join_order(relations: List[int]) -> Tuple[int, JoinOrder]:
     """Return minimum join cost with an optimal join order as a nested tuple.
 
     Parameters:
@@ -273,11 +278,11 @@ def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
             the number of blocks occupied by each relation.
     """
     @functools.cache
-    def min_join_cost(rels: Multiset) -> Tuple[int, Tuple[Multiset, Multiset]]:
+    def min_join_cost(rels: Multiset) -> Tuple[int, Optional[JoinPair]]:
         """Return minimum join cost with a pair of relations whose joining
         results in the optimal cost.
         """
-        def join_cost(outer, inner):
+        def join_cost(outer: Multiset, inner: Multiset) -> int:
             """Return nested-loop block join cost of outer and inner relations."""
             return math.prod(outer) * (math.prod(inner) + 1)
         return min(((min_join_cost(subset)[0] + min_join_cost(rels - subset)[0]
@@ -285,14 +290,14 @@ def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
                     (subset, rels - subset))
                     for subset in rels.powerset()),
                    key=operator.itemgetter(0),
-                   default=(0,))
+                   default=(0, None))
 
-    def reconstruct_join_order(rels: Multiset) -> Union[int, Tuple]:
+    def reconstruct_join_order(rels: Multiset) -> JoinOrder:
         """Return the nested tuple denoting an optimal join order."""
         if len(rels) == 1:
             return next(iter(rels))
         else:
-            return tuple(map(reconstruct_join_order, min_join_cost(rels)[1]))
+            return tuple(map(reconstruct_join_order, cast(JoinPair, min_join_cost(rels)[1])))
 
     return (min_join_cost(Multiset(relations))[0],
             reconstruct_join_order(Multiset(relations)))
