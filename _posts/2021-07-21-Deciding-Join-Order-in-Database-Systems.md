@@ -250,6 +250,7 @@ JoinPair = Tuple['Multiset', 'Multiset']
 
 
 class Multiset(collections.Counter):
+    """A logically immutable multiset based on Counter."""
     __init__: Callable[[Iterable], None]
 
     def __hash__(self):
@@ -285,22 +286,25 @@ def opt_join_order(relations: List[int]) -> Tuple[int, JoinOrder]:
         def join_cost(outer: Multiset, inner: Multiset) -> int:
             """Return nested-loop block join cost of outer and inner relations."""
             return math.prod(outer) * (math.prod(inner) + 1)
-        return min(((min_join_cost(subset)[0] + min_join_cost(rels - subset)[0]
-                    + join_cost(subset, rels - subset),
-                    (subset, rels - subset))
-                    for subset in rels.powerset()),
-                   key=operator.itemgetter(0),
-                   default=(0, None))
+
+        costs_with_pairs = ((min_join_cost(subset)[0]
+                             + min_join_cost(rels - subset)[0]
+                             + join_cost(subset, rels - subset),
+                             (subset, rels - subset))
+                            for subset in rels.powerset())
+        return min(costs_with_pairs, key=operator.itemgetter(0), default=(0, None))
 
     def reconstruct_join_order(rels: Multiset) -> JoinOrder:
         """Return the nested tuple denoting an optimal join order."""
         if len(rels) == 1:
             return next(iter(rels))
         else:
-            return tuple(map(reconstruct_join_order, cast(JoinPair, min_join_cost(rels)[1])))
+            joining_pair = cast(JoinPair, min_join_cost(rels)[1])
+            return tuple(map(reconstruct_join_order, joining_pair))
 
-    return (min_join_cost(Multiset(relations))[0],
-            reconstruct_join_order(Multiset(relations)))
+    rels = Multiset(relations)
+    min_cost, join_order = min_join_cost(rels)[0], reconstruct_join_order(rels)
+    return min_cost, join_order
 
 
 if __name__ == '__main__':
