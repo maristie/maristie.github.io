@@ -226,6 +226,18 @@ which evaluates to $T(10) \approx 59049$ unit operations, taking drastically les
 For simplicity, we assume all joins degenerate to Cartesian products and the only available join algorithm is the general-purpose nested-loop block join.
 
 ```python
+"""
+We supply a function opt_join_order() to compute both minimum join cost
+and optimal join order. For example,
+
+>>> opt_join_order([10])
+(0, 10)
+>>> opt_join_order([5, 5])
+(30, (5, 5))
+>>> opt_join_order([1, 2, 3])
+(11, ((1, 2), 3))
+"""
+
 import collections
 import functools
 import math
@@ -257,8 +269,8 @@ def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
     """Return minimum join cost with an optimal join order as a nested tuple.
 
     Parameters:
-    relations - a list of positive integers denoting the number of blocks
-        occupied by each relation.
+        relations -- a non-empty list of positive integers denoting
+            the number of blocks occupied by each relation.
     """
     @functools.cache
     def min_join_cost(rels: Multiset) -> Tuple[int, Tuple[Multiset, Multiset]]:
@@ -287,9 +299,8 @@ def opt_join_order(relations: List[int]) -> Tuple[int, Tuple]:
 
 
 if __name__ == '__main__':
-    # A simple test case
-    cost, join_order = opt_join_order([10, 500, 100, 1000, 20])
-    print(f'cost={cost}, join_order={join_order}')
+    import doctest
+    doctest.testmod()
 ```
 
 ### Dealing with More Relations
