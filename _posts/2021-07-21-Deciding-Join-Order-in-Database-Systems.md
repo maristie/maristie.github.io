@@ -249,11 +249,6 @@ JoinOrder = Union[int, Tuple]
 JoinPair = Tuple['Multiset', 'Multiset']
 
 
-class Result(NamedTuple):
-    cost: int = 0
-    pair: Optional[JoinPair] = None
-
-
 class Multiset:
     """A logically immutable multiset based on Counter."""
 
@@ -288,6 +283,10 @@ def opt_join_order(relations: List[int]) -> Tuple[int, JoinOrder]:
         relations -- a non-empty list of positive integers denoting
             the number of blocks occupied by each relation.
     """
+    class Result(NamedTuple):
+        cost: int = 0
+        pair: Optional[JoinPair] = None
+
     @functools.cache
     def min_join_cost(rels: Multiset) -> Result:
         """Return minimum join cost with a pair of relations whose joining
