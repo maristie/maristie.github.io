@@ -242,7 +242,8 @@ import functools
 import math
 from collections import Counter
 from itertools import chain, combinations
-from typing import Iterable, Iterator, List, NamedTuple, Optional, Tuple, Union, cast
+from typing import (Any, Iterable, Iterator, List,
+                    NamedTuple, Optional, Tuple, Union, cast)
 
 JoinOrder = Union[int, Tuple]
 JoinPair = Tuple['Multiset', 'Multiset']
@@ -259,7 +260,7 @@ class Multiset:
     def __init__(self, iterable: Iterable):
         self._cnt = Counter(iterable)
 
-    def __eq__(self, other: 'Multiset') -> bool:
+    def __eq__(self, other: Any) -> bool:
         return self._cnt == other._cnt if isinstance(other, Multiset) else False
 
     def __hash__(self):
