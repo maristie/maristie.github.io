@@ -269,7 +269,7 @@ class Multiset:
 
     def __sub__(self, other: Any) -> 'Multiset':
         if not isinstance(other, Multiset):
-            raise TypeError(f'Multiset required, but {type(other)} accepted.')
+            raise TypeError(f'Multiset required, but {type(other)} passed.')
         return Multiset(self._cnt - other._cnt)
 
     def powerset(self) -> Iterator['Multiset']:
