@@ -258,16 +258,18 @@ class Multiset:
     def __eq__(self, other: Any) -> bool:
         return self._cnt == other._cnt if isinstance(other, Multiset) else False
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(frozenset(self._cnt.items()))
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[int]:
         return self._cnt.elements()
 
-    def __len__(self):
+    def __len__(self) -> int:
         return sum(self._cnt.values())
 
-    def __sub__(self, other: 'Multiset') -> 'Multiset':
+    def __sub__(self, other: Any) -> 'Multiset':
+        if not isinstance(other, Multiset):
+            raise TypeError(f'Multiset required, but {type(other)} accepted.')
         return Multiset(self._cnt - other._cnt)
 
     def powerset(self) -> Iterator['Multiset']:
@@ -297,8 +299,8 @@ def opt_join_order(relations: List[int]) -> Tuple[int, JoinOrder]:
             return math.prod(outer) * (math.prod(inner) + 1)
 
         results = (Result(cost=min_join_cost(subset).cost
-                          + min_join_cost(rels - subset).cost
-                          + join_cost(subset, rels - subset),
+                               + min_join_cost(rels - subset).cost
+                               + join_cost(subset, rels - subset),
                           pair=(subset, rels - subset))
                    for subset in rels.powerset())
         return min(results, key=lambda r: r.cost, default=Result())
