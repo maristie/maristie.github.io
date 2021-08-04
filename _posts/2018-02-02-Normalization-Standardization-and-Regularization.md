@@ -49,7 +49,7 @@ L1 regularization is better when we want to train a sparse model, since the abso
 
 $$ F(x) = f(x) + \lambda {\lVert x \rVert}_2^2 $$
 
-L2 regularization[^wiki_l2] is preferred in ill-posed problems for smoothing.[^quora_reg]
+L2 regularization is preferred in ill-posed problems for smoothing.[^quora_reg]
 
 Here is a comparison between L1 and L2 regularizations.
 
@@ -63,4 +63,3 @@ Here is a comparison between L1 and L2 regularizations.
 [^se]: https://stats.stackexchange.com/a/10298
 [^quora_reg]: https://www.quora.com/What-is-the-difference-between-L1-and-L2-regularization-How-does-it-solve-the-problem-of-overfitting-Which-regularizer-to-use-and-when/answer/Kenneth-Tran
 [^wiki_reg]: https://en.wikipedia.org/wiki/Regularization_%28mathematics%29
-[^wiki_l2]: https://en.wikipedia.org/wiki/Ridge_regression
