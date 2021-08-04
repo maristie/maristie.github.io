@@ -16,10 +16,10 @@ In case of GitHub Pages for a specific account,
 1. Ensure you've created a repo named `USERNAME.github.io` (USERNAME is your account username)
 
 2. Click `Settings` at the top right in the repo.
-![Pic2](https://i.loli.net/2017/12/18/5a37752ff0093.png)
+![Pic2](/assets/images/legacy/5a37752ff0093.png)
 
 3. Find Custom Domain in GitHub Pages.
-![Pic3](https://i.loli.net/2017/12/18/5a3780cd16ad9.png)
+![Pic3](/assets/images/legacy/5a3780cd16ad9.png)
 
 4. Fill in the domain name you purchased on any registrar (e.g. GoDaddy, Namecheap, Google Domains, etc.)
 
@@ -49,7 +49,7 @@ Follow instructions given by Cloudflare, and finally change nameservers from ori
 
 Now it comes to the crucialc step. Click Crypto and check if SSL level is `Full` (neither `Flexible` nor `Full (strict)`). Some guides would suggest to select `Flexible`, which is out of date. In `Flexible` mode, there would be no SSL connection between Cloudflare and GitHub Pages servers, and it would cause security problems.
 
-![Pic](https://i.loli.net/2017/12/18/5a379c66c0b92.png)
+![Pic](/assets/images/legacy/5a379c66c0b92.png)
 
 A simple picture shows the differences between the modes.
 
@@ -59,7 +59,7 @@ A simple picture shows the differences between the modes.
 
 Since HTTPS provides secure connections between clients and servers, it's preferred that any request from clients be encrypted. It's not necessary to use Page Rules to enforce HTTPS. Cloudflare has provided a one-lick button in Crypto.
 
-![Pic](https://i.loli.net/2017/12/18/5a379f5c4cf26.png)
+![Pic](/assets/images/legacy/5a379f5c4cf26.png)
 
 ## Extra optimizations
 
