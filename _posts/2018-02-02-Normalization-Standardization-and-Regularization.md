@@ -33,7 +33,7 @@ Different from the feature scaling techniques mentioned above, regularization is
 
 There are mainly two basic types of regularization: L1-norm (lasso) and L2-norm (ridge regression).[^wiki_reg]
 
-### L1-norm[^quora_reg]
+### L1-norm
 
 The original loss function is denoted by $$f(x)$$, and the new one is $$F(x)$$.
 
@@ -43,13 +43,13 @@ where
 
 $$ {\lVert x \rVert}_p = \sqrt[p]{\sum_{i = 1}^{n} {\lvert x_i \rvert}^p} $$
 
-L1 regularization is better when we want to train a sparse model, since the absolute value function is not differentiable at 0.
+L1 regularization is better when we want to train a sparse model, since the absolute value function is not differentiable at 0.[^quora_reg]
 
-### L2-norm[^quora_reg][^wiki_l2]
+### L2-norm
 
 $$ F(x) = f(x) + \lambda {\lVert x \rVert}_2^2 $$
 
-L2 regularization is preferred in ill-posed problems for smoothing.
+L2 regularization[^wiki_l2] is preferred in ill-posed problems for smoothing.[^quora_reg]
 
 Here is a comparison between L1 and L2 regularizations.
 
@@ -59,8 +59,8 @@ Here is a comparison between L1 and L2 regularizations.
 ## References
 
 [^wiki_fs]: https://en.wikipedia.org/wiki/Feature_scaling
-[^quora_nsr]: https://www.quora.com/What-is-the-difference-between-normalization-standardization-and-regularization-for-data/answer/Enzo-Tagliazucchi?share=c48b6752&srid=51VPj
+[^quora_nsr]: https://www.quora.com/What-is-the-difference-between-normalization-standardization-and-regularization-for-data/answer/Enzo-Tagliazucchi
 [^se]: https://stats.stackexchange.com/a/10298
-[^quora_reg]: https://www.quora.com/What-is-the-difference-between-L1-and-L2-regularization-How-does-it-solve-the-problem-of-overfitting-Which-regularizer-to-use-and-when/answer/Kenneth-Tran?share=400c336d&srid=51VPj
+[^quora_reg]: https://www.quora.com/What-is-the-difference-between-L1-and-L2-regularization-How-does-it-solve-the-problem-of-overfitting-Which-regularizer-to-use-and-when/answer/Kenneth-Tran
 [^wiki_reg]: https://en.wikipedia.org/wiki/Regularization_%28mathematics%29
 [^wiki_l2]: https://en.wikipedia.org/wiki/Ridge_regression

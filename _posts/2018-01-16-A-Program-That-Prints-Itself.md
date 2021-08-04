@@ -1,8 +1,9 @@
 ---
-title: A Program Printing Itself
+title: A Program That Prints Itself
 tags: [IT, Computability Theory]
 redirect_from:
     - /blog/a-program-that-prints-itself/
+    - /2018/01/A-Program-Printing-Itself
 ---
 
 Is it possible to find a program that prints itself?
@@ -25,7 +26,7 @@ This is a basic deterministic single-tape Turing machine, the most widely used c
 
 Now the problem is abstracted as finding a TM that prints the description of itself.
 
-## Recursion theorem[^cm]
+## [Recursion theorem](https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem)
 
 We use $$ \langle T \rangle $$ to denote the description of a TM $$ T $$. Suppose there is a single-tape TM $$ P_w $$ that reads any input and output the string $$ w $$. $$ \langle P_w \rangle $$ denotes the description above. And then define another TM $$ Q $$:
 
@@ -50,5 +51,6 @@ Here $$ \langle R \rangle = \langle P_{\langle S \rangle}S \rangle $$.
 
 In fact it is a conclusion derived from the famous [recursion theorem](https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem). It ensures that self-reference is allowed in a TM. Therefore it is possible to construct a TM or program that prints itself.
 
+## Footnotes
+
 [^ntm_def]: It differs from deterministic one by multiple possible states after a state transition.
-[^cm]: https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem
