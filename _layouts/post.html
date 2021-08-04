@@ -27,7 +27,11 @@ layout: default
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {% include toc.html html=content %}
+    <nav>
+      <h4>Contents</h4>
+      {% include toc.html html=content h_max=2 %}
+    </nav>
+    
     {{ content }}
   </div>
 
