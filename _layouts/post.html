@@ -29,10 +29,9 @@ layout: default
         Credits to http://jrper.github.io/2018/04/03/AddingTags.html.
       {% endcomment %}
       {% if page.tags.size > 0 %}
-        • tags: {% for tag in page.tags %}
+        • Tags: {% for tag in page.tags %}
           <span class="p-category" itemprop="tag">
-            <a href="/tags#{{ tag }}">{{ tag }}</a></span>
-          {% unless forloop.last %}, {% endunless %}
+            <a href="/tags#{{ tag }}">{{ tag }}</a></span>{% unless forloop.last %}, {% endunless %}
         {% endfor %}
       {% endif %}</p>
   </header>
