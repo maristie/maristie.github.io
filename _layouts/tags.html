@@ -6,19 +6,17 @@ layout: default
 {% endcomment %}
 
 {% assign tags_by_name = site.tags | sort %}
-{% for tag in tags_by_name %}
-    {% assign t = tag | first %}
-    {% assign posts = tag | last %}
+{% for tag_with_posts in tags_by_name %}
+    {% assign tag = tag_with_posts | first %}
+    {% assign posts = tag_with_posts | last %}
     <div id="tags">
-        <a name="{{ t }}"></a><a href="/tags#{{ t }}">{{ t }} ({{ posts.size }})</a>
+        <a name="{{ tag }}"></a><a href="/tags#{{ tag }}">{{ tag }} ({{ posts.size }})</a>
     </div>
     <ul>
         {% for post in posts %}
-        {% if post.tags contains t %}
-        <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
-        {% endif %}
+            <li>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
         {% endfor %}
     </ul>
 {% endfor %}
