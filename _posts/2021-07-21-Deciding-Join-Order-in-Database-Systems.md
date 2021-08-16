@@ -1,6 +1,6 @@
 ---
 title: "Deciding Join Order in Database Systems"
-tags: [IT, database]
+tags: [IT, Database]
 ---
 
 The database system is one of the major components in a bunch of software projects. In particular, a widely used operation on database is *join operation*. For example, suppose we have two separate data stores for employee and department information in a company. How do we know the employees who work under a department located in California? In general, when we need to combine two data sources to obtain our desired results, a join operation between them is necessary, denoting their consolidation into a structured whole.
