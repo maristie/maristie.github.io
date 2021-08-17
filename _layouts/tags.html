@@ -12,8 +12,8 @@ layout: default
 {% assign sorted_tags = tags | sort_natural %}
 {% for tag in sorted_tags %}
     {% assign posts = site.tags[tag] %}
-    <div class="p-category" itemprop="tag">
-        <a id="{{ tag }}" href="/tags#{{ tag }}">{{ tag }} ({{ posts.size }})</a>
+    <div>
+        <a id="{{ tag }}" href="/tags#{{ tag }}"><span class="p-category" itemprop="tag">{{ tag }}</span></a> ({{ posts.size }})
     </div>
     <ul>
         {% for post in posts %}
