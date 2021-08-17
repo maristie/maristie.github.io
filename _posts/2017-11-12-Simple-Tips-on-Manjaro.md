@@ -31,8 +31,6 @@ FandolSong is both the default font for TeX Live and most of the time designated
 
 However it met some problems with Evince (default PDF viewer of GNOME) that FandolSong, perhaps along with more fonts, cannot be displayed or rather rendered with Evince.
 
-Thanks to http://tieba.baidu.com/p/4455633723 for providing the solution below:
-
 ```shell
 $ pacman -S poppler-data
 ```
