@@ -5,8 +5,6 @@ author:
 description: >
   A simple and irregularly updated personal blog out of interest.
 
-show_excerpts: false # set to true to show excerpts on the homepage
-
 minima:
   social_links:
     linkedin: maristie
