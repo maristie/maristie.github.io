@@ -95,7 +95,8 @@ The influence from Soviet to China could by no means be ignored, as Soviet heavi
 
 Russia was developed from Slavic nations within the sphere of influence of the Byzantine Empire. Since it was located far from the Atlantic Ocean and the struggling centers of Europe, Russia was relatively isolated from its western and central European peers and thus in some way shared common external environments with China.
 
-![Map of Russia](https://www.nationsonline.org/maps/European-Russia-topographic-map.jpg)
+![Map of Russia](/assets/images/russia_map.png)
+*from https://www.nationsonline.org/maps/European-Russia-topographic-map.jpg*
 
 A stable and conservative monarchy was established after the Mongol invasions, characterized by the Tsardom of Russia. Not until the reformation pushed by Peter the Great revamped the entire state did Russia enter the main stage of European affairs. However, powers were highly centralized in the central authority in his reign, accompanying the westernization and modernization of Russia.
 
@@ -199,8 +200,8 @@ We specifically stated and explained the inherent deficiencies of state-led syst
 
 For instance, US mobilized an enormous number of resources during World War II. We can see the fact from the following table:
 
-| | US | contrasted with |
-| --- | --- | --- |
+| &nbsp; | US | contrasted with |
+|---|---|---|
 | Tanks | 88,410 | Germany: 44,857 |
 | Aircrafts | 299,293 | Japan: 69,910 |
 | Aircraft Carriers | 105 | Japan: 25 |
