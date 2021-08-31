@@ -95,7 +95,7 @@ The influence from Soviet to China could by no means be ignored, as Soviet heavi
 
 Russia was developed from Slavic nations within the sphere of influence of the Byzantine Empire. Since it was located far from the Atlantic Ocean and the struggling centers of Europe, Russia was relatively isolated from its western and central European peers and thus in some way shared common external environments with China.
 
-![Map of Russia](/assets/images/russia_map.png)
+![Map of Russia](/assets/images/russia_map.jpg)
 *from https://www.nationsonline.org/maps/European-Russia-topographic-map.jpg*
 
 A stable and conservative monarchy was established after the Mongol invasions, characterized by the Tsardom of Russia. Not until the reformation pushed by Peter the Great revamped the entire state did Russia enter the main stage of European affairs. However, powers were highly centralized in the central authority in his reign, accompanying the westernization and modernization of Russia.
@@ -200,11 +200,12 @@ We specifically stated and explained the inherent deficiencies of state-led syst
 
 For instance, US mobilized an enormous number of resources during World War II. We can see the fact from the following table:
 
-| &nbsp; | US | contrasted with |
+| | US | contrasted with |
 |---|---|---|
 | Tanks | 88,410 | Germany: 44,857 |
 | Aircrafts | 299,293 | Japan: 69,910 |
 | Aircraft Carriers | 105 | Japan: 25 |
+
 *from sources [1](https://www.lacrosselibrary.org/sites/default/files/u117/05-aircraft_carriers_rule_the_pacific.pdf), [2](https://www.digitalhistory.uh.edu/disp_textbook.cfm?smtid=2&psid=3491), [3](https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/america-goes-war-take-closer-look), [4](https://en.wikipedia.org/wiki/Imperial_Japanese_Navy_in_World_War_II)*
 
 Also be informed that US mobilized most of its military forces from the Pearl Harbor attack to the end of WWII, in less than 4 years, demonstrating its war potential as a whole. No doubt the war efforts of US under a state-led framework were impressive. Similar efforts were paid to the development of nuclear weapons, aka the Manhattan Project. Needless to talk about the results, it was at least clear that US was able to coordinate a state-led system when needed, and the system played a major role in the final victory of the Allied.
