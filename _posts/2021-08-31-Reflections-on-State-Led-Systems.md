@@ -3,11 +3,11 @@ title: "Reflections on State-Led Systems"
 tags: [Politics]
 ---
 
-After the Tokyo Olympics ended around two weeks ago, most people's attention is attracted by the withdrawal of US troops from Afghanistan. While the Tokyo Olympics itself is gone, there are some interesting facts reflected by the event.
+After the Tokyo Olympics ended around two weeks ago, most people's attention is attracted by the withdrawal of US troops from Afghanistan. While the Tokyo Olympics has gone, there are some interesting facts reflected in the event.
 
 Many see the Olympics mainly as an entertainment, and some would instead relate it to national pride. In China, the latter phenomenon is especially obvious. Not only did a lot of people pay excessive attention to the medal ranking board, but the state also spent an immense amount of resources on the training of athletes as national representatives, only for the single purpose of winning gold medals. In history, the same enthusiasm was frequently repeated in Soviet and its Eastern Bloc as well.
 
-It might seem strange in western countries, in which allocating state resources on an entertaining event would be silly and unreasonable. However, it is indeed a small tip of the iceberg of people's fanaticism about such state-led systems.
+It might seem strange in most western countries, in which allocating state resources on an entertaining event would be unreasonable. However, it is indeed a small tip of the iceberg of people's fanaticism about such state-led systems.
 
 
 ## Definition
