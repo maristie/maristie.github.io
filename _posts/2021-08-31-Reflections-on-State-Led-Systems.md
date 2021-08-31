@@ -176,13 +176,13 @@ Governments always risk failures. Governments are by all means essential organiz
 
 Notice that the local nobility enjoyed significant autonomy due to the traditions of feudalism, and they played a key role in both the ratification of Magna Carta and the Glorious Revolution. The moral is that a strong local autonomy with only minimal powers delegated to a centralized body could in turn help with robustness of the entire system, compared with a state-led one. It is exactly the model followed in the US, where states hold considerable autonomous powers and the federal government is limited. The US is worth particular and detailed elaboration on our topic today, but for brevity further introduction might be done in another article in the future.
 
-### Rent-seeking
+### Rent-Seeking
 
 Yet another problem of state-led systems is rent-seeking. In such cases, the central authority makes final decisions on a wide range of issues without external alternatives or supervision. Corruption is a general problem even in democratic governments, which proves again that governments should never be overtrusted. A more serious and systematic abuse of power arising from such systems is crony capitalism. Entrepreneurs run their businesses not in response to market demands, but instead in collusion with state power to maintain their advantages over competitors. It undermines the fundamental driving force of markets and suppresses the private sector, from which government officials exploit their privilege to benefit. China and Russia are just two of the contemporary illustrations.
 
 As an aside, the leadership assumed by political figures instead of professional managers or other talents is an additional source of inefficiency. Similar to economic motives, these leaders pursue specific political gains in leading a public system without taking any actual responsibility, and hence perform badly in management activities. The aforementioned Lysenkoism in Soviet was an obvious example.
 
-### Economic view
+### Economic View
 
 State-led systems are generally burdened with a heavy bureaucracy for execution. The public pays for their faults, while they act with significant power (at least inside the system). The intrinsic inefficiency of bureaucracy simply results from going against fundamental economic principles no matter whether it is justified by democracy or not. The lack of market feedback obstructs its adaptability and flexibility toward changes. Since governments are less sensitive to the consequences of making an incorrect business decision, resources could be greatly wasted in the state-run businesses throughout a long period.
 
