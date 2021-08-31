@@ -26,7 +26,7 @@ Although it's a common institution in many countries, some demonstrate much more
 
 - COVID-19: While there are always arguments about whether governments should take more radical measures to stop the spread of COVID-19 viruses, it's unequivocal in China that the central government is justified to and should take *any* approach "for the sake of public health". After Delta variants broke out in some major cities (e.g., Nanjing) in China, a new wave of lockdown is in progress to reduce COVID cases to zero, aside from confining people to their homes and enforced virus testing and tracking.
 
-- Chip War: As part of escalating US-China conflicts, chips (a colloquial term for general semiconductors for computational purposes) are forbidden to export to more and more Chinese firms which are identified as cooperators with Chinese government and military forces. In retaliation, the government has put a plethora of resources like subsidizing semiconductor businesses or research projects in national universities, targeting completely home-made chips ridded of western technologies.
+- Chip Wars: As part of escalating US-China conflicts, chips (a colloquial term for general semiconductors for computational purposes) are forbidden to export to more and more Chinese firms which are identified as cooperators with Chinese government and military forces. In retaliation, the government has put a plethora of resources like subsidizing semiconductor businesses or research projects in national universities, targeting completely home-made chips ridded of western technologies.
 
 - Family Planning: China's family planning policies, sometimes criticized for violations against human rights, were first initiated in Mao's era, which was greatly overshadowed by events like the Great Leap Forward and Cultural Revolution. It was later continued and strengthened by Deng Xiaoping, the second generation leader of China. The state then conducted a thorough and strict enforcement of these policies, resulting in an extremely biased population structure today. At last the government became aware of risking an aging society, and began to push a "two-child policy" from 2015. This year 
 it further announced a shift to "three-child policy".
@@ -202,11 +202,9 @@ For instance, US mobilized an enormous number of resources during World War II. 
 
 | | US | contrasted with |
 |---|---|---|
-| Tanks | 88,410 | Germany: 44,857 |
-| Aircrafts | 299,293 | Japan: 69,910 |
-| Aircraft Carriers | 105 | Japan: 25 |
-
-*from sources [1](https://www.lacrosselibrary.org/sites/default/files/u117/05-aircraft_carriers_rule_the_pacific.pdf), [2](https://www.digitalhistory.uh.edu/disp_textbook.cfm?smtid=2&psid=3491), [3](https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/america-goes-war-take-closer-look), [4](https://en.wikipedia.org/wiki/Imperial_Japanese_Navy_in_World_War_II)*
+| Tanks<sup>[1](https://www.digitalhistory.uh.edu/disp_textbook.cfm?smtid=2&psid=3491)</sup> | 88,410 | Germany: 44,857 |
+| Aircrafts<sup>[1](https://www.digitalhistory.uh.edu/disp_textbook.cfm?smtid=2&psid=3491)</sup> | 299,293 | Japan: 69,910 |
+| Aircraft Carriers<sup>[2](https://www.lacrosselibrary.org/sites/default/files/u117/05-aircraft_carriers_rule_the_pacific.pdf),[3](https://en.wikipedia.org/wiki/Imperial_Japanese_Navy_in_World_War_II)</sup> | 105 | Japan: 25 |
 
 Also be informed that US mobilized most of its military forces from the Pearl Harbor attack to the end of WWII, in less than 4 years, demonstrating its war potential as a whole. No doubt the war efforts of US under a state-led framework were impressive. Similar efforts were paid to the development of nuclear weapons, aka the Manhattan Project. Needless to talk about the results, it was at least clear that US was able to coordinate a state-led system when needed, and the system played a major role in the final victory of the Allied.
 
@@ -220,4 +218,4 @@ So will it be reasonable to create state-led systems when necessary? The answer 
 Freedom is scarce. It was not until recent hundreds of years that people began to consider the concept of liberty in a systematic manner, let alone establishment of a real working system. In mature and immature democracies, liberty is implemented in different dimensions and to different degrees. For other countries, they have yet to take a first step. However, state-led systems are often a potential threat to political and economic liberty in many pernicious ways in both of them. Fortunately, our predecessors have conducted many useful systematic analyses of them, leaving invaluable legacies for us. The ideas have proved to be extremely instructive and inspiring, and I hope they will be clear through this article now.
 
 Let me quote [the words from Benjamin Franklin](https://founders.archives.gov/documents/Franklin/01-06-02-0107#BNFN-01-06-02-0107-fn-0005-ptr) as a final remark:
-> Those who would give up essential Liberty, to purchase a little temporary Safety, deserve neither Liberty nor Safety.
+> Those who would give up **essential Liberty**, to purchase a little temporary Safety, deserve neither Liberty nor Safety.
