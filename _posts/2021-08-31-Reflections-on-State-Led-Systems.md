@@ -172,13 +172,19 @@ As is known to all, great ideas that contribute exceptionally to the progress of
 
 ### Lack of Separation of Powers
 
-Montesquieu was famous for his support of separation of powers in governments. Certainly, by limiting the power of each branch, it is made more difficult for one single man to take control of all branches, and thus is more fault tolerant. But it is only part of the whole story. Governments themselves should sometimes be identified as threats to individuals, which necessitates mechanisms out of the regular framework of government-led decision processes.
+Montesquieu was famous as a strong advocate for separation of powers in governments. Certainly, by limiting the power of each branch, it's much more difficult for a single entity to take control of all branches, and thus would be more fault tolerant in case the entity failed. But it doesn't tell the whole story—it's far from enough to separate governmental powers internally. Governments themselves should sometimes be identified as threats to individuals, which necessitates mechanisms out of the regular framework of government-led decision processes.
 
 As we stated in the historical analyses, the effectiveness of democratic systems rely on the independent reactions from various factions to represent their interests. The same rationale applies to the government itself. If the single democratic system fails (and it really does), we'll have to rely on extra powers to supervise the government and take its own responsibility from the government. In fact, neither the local aristocrats nor the church power was part of the executive system from the beginning. To facilitate the betterment of a governing system, the best approach is not to make it a single omnipotent governing entity and let the other parts of society go by themselves. Governments shouldn't be the only dominant element in state affairs.
 
-### Single Point of Failure: Central vs. Local
+### Single Point of Failure
 
-Governments always risk failures. Governments are by all means essential organizations, but we cannot ignore the possibility that they fail in either an accidental or systematic way, since the price is too high to pay. There are many methods to mitigate the formidable consequences of government failures, with some of them explained in the above sections. Another one can be learned from British history as well.
+Governments always risk failures. Governments are by all means essential organizations, but we cannot ignore the possibility that they fail in an either accidental or systematic way, for the price is too high to pay.
+
+By referring to "failure" of government, we denote situations where the government failed to take appropriate action. However, it's extremely difficult, if not impossible, to define what kind of action is *appropriate*, let alone the execution. Therefore, it would bring more robustness to the whole system when the decision and execution processes aren't exclusive to a centralized authority. When private sectors take over the responsibility, they usually enjoy a larger diversity and take action more flexibly and responsively. Furthermore, partial failure will have a minimized impact on the whole system as a result of some failed strategies, which would be definitely better than government failure.
+
+There are many approaches to mitigating the formidable consequences of government failures, with some of them explained in the above sections. Another one can be learned from British history as well.
+
+#### Central vs. Local
 
 Notice that the local nobility enjoyed significant autonomy due to the traditions of feudalism, and they played a key role in both the ratification of Magna Carta and the Glorious Revolution. The moral is that a strong local autonomy with only minimal powers delegated to a centralized body could in turn help with robustness of the entire system, compared with a state-led one. It is exactly the model followed in the US, where states hold considerable autonomous powers and the federal government is limited. The US is worth particular and detailed elaboration on our topic today, but for brevity further introduction might be done in another article in the future.
 
@@ -188,13 +194,13 @@ Yet another problem of state-led systems is rent-seeking. In such cases, the cen
 
 As an aside, the leadership assumed by political figures instead of professional managers or other talents is an additional source of inefficiency. Similar to economic motives, these leaders pursue specific political gains in leading a public system without taking any actual responsibility, and hence perform badly in management activities. The aforementioned Lysenkoism in Soviet was an obvious example.
 
-### Economic View
+### Economic Inefficiency
 
-State-led systems are generally burdened with a heavy bureaucracy for execution. The public pays for their faults, while they act with significant power (at least inside the system). The intrinsic inefficiency of bureaucracy simply results from going against fundamental economic principles no matter whether it is justified by democracy or not. The lack of market feedback obstructs its adaptability and flexibility toward changes. Since governments are less sensitive to the consequences of making an incorrect business decision, resources could be greatly wasted in the state-run businesses throughout a long period.
+State-led systems are generally burdened with a heavy bureaucracy for execution. The public pays for their faults, while they act with significant power (at least within the system). The intrinsic inefficiency of bureaucracy simply results from going against fundamental economic principles no matter whether it is justified by democracy or not. The lack of market feedback obstructs its adaptability and flexibility toward changes. Since governments are less sensitive to the consequences of making an incorrect business decision, resources could be greatly wasted in the state-run businesses throughout a long period.
 
 State intervention in market affairs are not good choices in most cases for the above reasons. Governments can rarely be as competent as private firms faced with competition from peers. In a word, they are not motivated to do it right. However, there are indeed exceptions where governments are essential to resolve market failures, so a completely *laissez-faire* strategy is infeasible too. A good rule of thumb is that governments should only step into markets to the minimum necessary.
 
-### Science and Technology Innovations
+### Limited Innovation in Science and Technology
 
 It deserves reiteration that decentralized systems are more adaptive than centralized ones. Innovations in science and technology arise largely from private sectors rather than state-run ones. The first industrial revolution originated in the cotton industry among the factories. It was driven by the motivation of self-interested industrialists to improve the manufacturing efficiency, lacking any aid or intervention from the British government. The result, as we stated before, was significant leaps for both the United Kingdom and humankind. It is one of the best annotations for the idea that private sectors are a major source of innovations.
 
