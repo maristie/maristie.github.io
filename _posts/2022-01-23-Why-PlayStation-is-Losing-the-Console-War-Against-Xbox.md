@@ -1,9 +1,9 @@
 ---
 title: "Why PlayStation is Losing the Console War against Xbox"
-tags: [Gaming, IT]
+tags: [Gaming, IT, Cloud]
 ---
 
-Upon Microsoft's public [announcement](https://news.microsoft.com/features/microsoft-to-acquire-activision-blizzard-to-bring-the-joy-and-community-of-gaming-to-everyone-across-every-device/) of plans to acquire Activision Blizzard, discussions on the console war between PlayStation and Xbox were heated again. Some people regarded platform exclusivity of more games would build Xbox's edge over PlayStation, while others felt relieved after Xbox head [affirmed future releases of CoD on PlayStation](https://twitter.com/XboxP3/status/1484273335139651585). However, both sides have *underestimated* Microsoft's ambition.
+Upon Microsoft's public [announcement](https://news.microsoft.com/features/microsoft-to-acquire-activision-blizzard-to-bring-the-joy-and-community-of-gaming-to-everyone-across-every-device/) of plans to acquire Activision Blizzard, discussions on the console war between PlayStation and Xbox were heated again. Some people regarded platform exclusivity of more games would build Xbox's edge over PlayStation, while others felt relieved after Xbox head [affirmed future releases of Call of Duty on PlayStation](https://twitter.com/XboxP3/status/1484273335139651585). However, both sides have *underestimated* Microsoft's ambition.
 
 Sony no doubt [sells more consoles](https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles) in the last and current generation, and has arguably stronger exclusive franchises till now. However, Microsoft is really aiming to reshape the entire video game industry, which could pose a fundamental threat to PlayStation's current business model.
 
@@ -40,7 +40,7 @@ We can identify three basic requirements in the success of cloud gaming:
 
 There are currently [four major cloud gaming service providers](https://www.spglobal.com/marketintelligence/en/news-insights/latest-news-headlines/new-cloud-gaming-service-faces-unique-challenges-as-industry-finds-its-way-57510891) in the market now, namely Google Stadia, Nvidia GeForce NOW, PlayStation Now and Microsoft xCloud. Among them, Google is very strong in both cloud computing and networking, but has a fatally lackluster library of games. Nvidia is faced with similar problems when many game publishers pulled their games from GeForce NOW. Amazon Luna, a newcomer to cloud gaming, is also expected to bother with them despite its partnership with Ubisoft.
 
-PlayStation Now owns a great variety of first-party games, but Sony is by no means a match in cloud computing and networking compared with those tech giants. Even though Sony is borrowing computing and networking infrastructure from major cloud service providers, the immense gap in engineering will enable Microsoft to take first moves. Finally, Microsoft xCloud is the only one that satisfies all of the three conditions.
+PlayStation owns a great variety of first-party games, but Sony is by no means a match in cloud computing and networking compared with those tech giants. Even though Sony is borrowing computing and networking infrastructure from major cloud service providers, the immense gap in engineering will enable Microsoft to take first moves. Finally, Microsoft xCloud is the only one that satisfies all of the three conditions.
 
 As a corollary, up to now the single company that might be able to threaten Microsoft in this industry is Tencent. However, the following factors are blocking Tencent from actually becoming a global competitor in cloud gaming:
 
